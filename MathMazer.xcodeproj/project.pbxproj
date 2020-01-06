@@ -1,0 +1,568 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C9490BD823C1AA1A003F6159 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BD723C1AA1A003F6159 /* AppDelegate.swift */; };
+		C9490BDA23C1AA1A003F6159 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BD923C1AA1A003F6159 /* ContentView.swift */; };
+		C9490BDC23C1AA1C003F6159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9490BDB23C1AA1C003F6159 /* Assets.xcassets */; };
+		C9490BDF23C1AA1C003F6159 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9490BDE23C1AA1C003F6159 /* Preview Assets.xcassets */; };
+		C9490BE223C1AA1C003F6159 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9490BE023C1AA1C003F6159 /* Main.storyboard */; };
+		C9490BEE23C1AA1C003F6159 /* MathMazerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BED23C1AA1C003F6159 /* MathMazerTests.swift */; };
+		C9490BFA23C1AB09003F6159 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BF923C1AB09003F6159 /* Cell.swift */; };
+		C9490BFC23C1B626003F6159 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BFB23C1B626003F6159 /* CellView.swift */; };
+		C9490BFF23C25451003F6159 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9490BFE23C25451003F6159 /* ReSwift */; };
+		C9490C0223C25468003F6159 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0123C25468003F6159 /* AppState.swift */; };
+		C9490C0423C25AC0003F6159 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0323C25AC0003F6159 /* Tool.swift */; };
+		C9490C0723C25B22003F6159 /* CellGridReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0623C25B22003F6159 /* CellGridReducer.swift */; };
+		C9490C0A23C2A28A003F6159 /* Cell+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0923C2A28A003F6159 /* Cell+Actions.swift */; };
+		C9490C0C23C2AF1A003F6159 /* ObservableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0B23C2AF1A003F6159 /* ObservableState.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C9490BEA23C1AA1C003F6159 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9490BCC23C1AA19003F6159 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9490BD323C1AA1A003F6159;
+			remoteInfo = MathMazer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C9490BD423C1AA1A003F6159 /* MathMazer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathMazer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9490BD723C1AA1A003F6159 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C9490BD923C1AA1A003F6159 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C9490BDB23C1AA1C003F6159 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C9490BDE23C1AA1C003F6159 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C9490BE123C1AA1C003F6159 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C9490BE323C1AA1C003F6159 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9490BE423C1AA1C003F6159 /* MathMazer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MathMazer.entitlements; sourceTree = "<group>"; };
+		C9490BE923C1AA1C003F6159 /* MathMazerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathMazerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9490BED23C1AA1C003F6159 /* MathMazerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathMazerTests.swift; sourceTree = "<group>"; };
+		C9490BEF23C1AA1C003F6159 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9490BF923C1AB09003F6159 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		C9490BFB23C1B626003F6159 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		C9490C0123C25468003F6159 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		C9490C0323C25AC0003F6159 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		C9490C0623C25B22003F6159 /* CellGridReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellGridReducer.swift; sourceTree = "<group>"; };
+		C9490C0923C2A28A003F6159 /* Cell+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Actions.swift"; sourceTree = "<group>"; };
+		C9490C0B23C2AF1A003F6159 /* ObservableState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableState.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9490BD123C1AA1A003F6159 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9490BFF23C25451003F6159 /* ReSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9490BE623C1AA1C003F6159 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C9490BCB23C1AA19003F6159 = {
+			isa = PBXGroup;
+			children = (
+				C9490BD623C1AA1A003F6159 /* MathMazer */,
+				C9490BEC23C1AA1C003F6159 /* MathMazerTests */,
+				C9490BD523C1AA1A003F6159 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C9490BD523C1AA1A003F6159 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9490BD423C1AA1A003F6159 /* MathMazer.app */,
+				C9490BE923C1AA1C003F6159 /* MathMazerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9490BD623C1AA1A003F6159 /* MathMazer */ = {
+			isa = PBXGroup;
+			children = (
+				C9490C0823C2A280003F6159 /* Actions */,
+				C9490C0523C25B16003F6159 /* Reducers */,
+				C9490C0023C2545D003F6159 /* State */,
+				C9490BF823C1AAED003F6159 /* Models */,
+				C9490BD723C1AA1A003F6159 /* AppDelegate.swift */,
+				C9490BD923C1AA1A003F6159 /* ContentView.swift */,
+				C9490BFB23C1B626003F6159 /* CellView.swift */,
+				C9490BDB23C1AA1C003F6159 /* Assets.xcassets */,
+				C9490BE023C1AA1C003F6159 /* Main.storyboard */,
+				C9490BE323C1AA1C003F6159 /* Info.plist */,
+				C9490BE423C1AA1C003F6159 /* MathMazer.entitlements */,
+				C9490BDD23C1AA1C003F6159 /* Preview Content */,
+			);
+			path = MathMazer;
+			sourceTree = "<group>";
+		};
+		C9490BDD23C1AA1C003F6159 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C9490BDE23C1AA1C003F6159 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C9490BEC23C1AA1C003F6159 /* MathMazerTests */ = {
+			isa = PBXGroup;
+			children = (
+				C9490BED23C1AA1C003F6159 /* MathMazerTests.swift */,
+				C9490BEF23C1AA1C003F6159 /* Info.plist */,
+			);
+			path = MathMazerTests;
+			sourceTree = "<group>";
+		};
+		C9490BF823C1AAED003F6159 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C9490BF923C1AB09003F6159 /* Cell.swift */,
+				C9490C0323C25AC0003F6159 /* Tool.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C9490C0023C2545D003F6159 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				C9490C0123C25468003F6159 /* AppState.swift */,
+				C9490C0B23C2AF1A003F6159 /* ObservableState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		C9490C0523C25B16003F6159 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				C9490C0623C25B22003F6159 /* CellGridReducer.swift */,
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		C9490C0823C2A280003F6159 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				C9490C0923C2A28A003F6159 /* Cell+Actions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9490BD323C1AA1A003F6159 /* MathMazer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9490BF223C1AA1C003F6159 /* Build configuration list for PBXNativeTarget "MathMazer" */;
+			buildPhases = (
+				C9490BD023C1AA1A003F6159 /* Sources */,
+				C9490BD123C1AA1A003F6159 /* Frameworks */,
+				C9490BD223C1AA1A003F6159 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MathMazer;
+			packageProductDependencies = (
+				C9490BFE23C25451003F6159 /* ReSwift */,
+			);
+			productName = MathMazer;
+			productReference = C9490BD423C1AA1A003F6159 /* MathMazer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C9490BE823C1AA1C003F6159 /* MathMazerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9490BF523C1AA1C003F6159 /* Build configuration list for PBXNativeTarget "MathMazerTests" */;
+			buildPhases = (
+				C9490BE523C1AA1C003F6159 /* Sources */,
+				C9490BE623C1AA1C003F6159 /* Frameworks */,
+				C9490BE723C1AA1C003F6159 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9490BEB23C1AA1C003F6159 /* PBXTargetDependency */,
+			);
+			name = MathMazerTests;
+			productName = MathMazerTests;
+			productReference = C9490BE923C1AA1C003F6159 /* MathMazerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9490BCC23C1AA19003F6159 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Mathew Polzin";
+				TargetAttributes = {
+					C9490BD323C1AA1A003F6159 = {
+						CreatedOnToolsVersion = 11.2;
+					};
+					C9490BE823C1AA1C003F6159 = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = C9490BD323C1AA1A003F6159;
+					};
+				};
+			};
+			buildConfigurationList = C9490BCF23C1AA19003F6159 /* Build configuration list for PBXProject "MathMazer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C9490BCB23C1AA19003F6159;
+			packageReferences = (
+				C9490BFD23C25451003F6159 /* XCRemoteSwiftPackageReference "ReSwift" */,
+			);
+			productRefGroup = C9490BD523C1AA1A003F6159 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9490BD323C1AA1A003F6159 /* MathMazer */,
+				C9490BE823C1AA1C003F6159 /* MathMazerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9490BD223C1AA1A003F6159 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9490BE223C1AA1C003F6159 /* Main.storyboard in Resources */,
+				C9490BDF23C1AA1C003F6159 /* Preview Assets.xcassets in Resources */,
+				C9490BDC23C1AA1C003F6159 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9490BE723C1AA1C003F6159 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9490BD023C1AA1A003F6159 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9490BFC23C1B626003F6159 /* CellView.swift in Sources */,
+				C9490C0C23C2AF1A003F6159 /* ObservableState.swift in Sources */,
+				C9490C0A23C2A28A003F6159 /* Cell+Actions.swift in Sources */,
+				C9490C0223C25468003F6159 /* AppState.swift in Sources */,
+				C9490BDA23C1AA1A003F6159 /* ContentView.swift in Sources */,
+				C9490C0423C25AC0003F6159 /* Tool.swift in Sources */,
+				C9490C0723C25B22003F6159 /* CellGridReducer.swift in Sources */,
+				C9490BD823C1AA1A003F6159 /* AppDelegate.swift in Sources */,
+				C9490BFA23C1AB09003F6159 /* Cell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9490BE523C1AA1C003F6159 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9490BEE23C1AA1C003F6159 /* MathMazerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C9490BEB23C1AA1C003F6159 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9490BD323C1AA1A003F6159 /* MathMazer */;
+			targetProxy = C9490BEA23C1AA1C003F6159 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C9490BE023C1AA1C003F6159 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9490BE123C1AA1C003F6159 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C9490BF023C1AA1C003F6159 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C9490BF123C1AA1C003F6159 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		C9490BF323C1AA1C003F6159 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MathMazer/MathMazer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"MathMazer/Preview Content\"";
+				DEVELOPMENT_TEAM = MQ545UAQRZ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MathMazer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C9490BF423C1AA1C003F6159 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MathMazer/MathMazer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"MathMazer/Preview Content\"";
+				DEVELOPMENT_TEAM = MQ545UAQRZ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MathMazer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C9490BF623C1AA1C003F6159 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MQ545UAQRZ;
+				INFOPLIST_FILE = MathMazerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathMazer.app/Contents/MacOS/MathMazer";
+			};
+			name = Debug;
+		};
+		C9490BF723C1AA1C003F6159 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MQ545UAQRZ;
+				INFOPLIST_FILE = MathMazerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathMazer.app/Contents/MacOS/MathMazer";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9490BCF23C1AA19003F6159 /* Build configuration list for PBXProject "MathMazer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9490BF023C1AA1C003F6159 /* Debug */,
+				C9490BF123C1AA1C003F6159 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9490BF223C1AA1C003F6159 /* Build configuration list for PBXNativeTarget "MathMazer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9490BF323C1AA1C003F6159 /* Debug */,
+				C9490BF423C1AA1C003F6159 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9490BF523C1AA1C003F6159 /* Build configuration list for PBXNativeTarget "MathMazerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9490BF623C1AA1C003F6159 /* Debug */,
+				C9490BF723C1AA1C003F6159 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C9490BFD23C25451003F6159 /* XCRemoteSwiftPackageReference "ReSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReSwift/ReSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C9490BFE23C25451003F6159 /* ReSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C9490BFD23C25451003F6159 /* XCRemoteSwiftPackageReference "ReSwift" */;
+			productName = ReSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C9490BCC23C1AA19003F6159 /* Project object */;
+}
