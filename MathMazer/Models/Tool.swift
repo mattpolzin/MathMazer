@@ -8,7 +8,31 @@
 
 import Foundation
 
-enum Tool {
+enum Tool: Hashable {
     case mapMaker
-    case mazeMaker
+    case player
+
+    mutating func toggle() {
+        switch self {
+        case .mapMaker:
+            self = .player
+
+        case .player:
+            self = .mapMaker
+        }
+    }
+
+    var mode: Mode {
+        switch self {
+        case .mapMaker:
+            return .design
+        case .player:
+            return .play
+        }
+    }
+}
+
+enum Mode: Hashable {
+    case design
+    case play
 }

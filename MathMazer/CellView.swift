@@ -8,111 +8,38 @@
 
 import SwiftUI
 
+// TODO: move logic here into new models created from state rather than just passing state through. For example, instead of figuring out which mode should result in which lines being drawn, just pass the lines that need drawing in straight away.
+
 fileprivate let lineWidth: CGFloat = 15
 
 struct CellView: View {
 
-    @State var model: Cell
+    var model: Cell
+    var mode: Mode
+    var selected: Bool
 
     var body: some View {
         ZStack {
 
-            if model.cellType.isExcluded {
+            if model.isExcluded {
                 Color.gray
 
                 // dot counts
                 countText
             } else {
                 Color.white
+                model.specialMark.map({ $0 == .start ? Color.green : Color.red })?.clipShape(Circle().inset(by: lineWidth))
+
+                LinesView(model: model.cellType, mode: mode)
             }
 
             // border
             Rectangle()
                 .fill(Color.clear)
-                .border(Color.black, width: 0.5)
-
-            // maze lines
-            horizontalLines
-            verticalLines
-        }
-    }
-
-    var horizontalLines: some View {
-        HStack(spacing: 0) {
-
-            if model.cellType.contains(.left, for: .design) {
-                Rectangle()
-                    .fill()
-                    .foregroundColor(.black)
-                    .frame(minWidth: 0,
-                           maxWidth: .infinity,
-                           minHeight: lineWidth,
-                           maxHeight: lineWidth,
-                           alignment: .center)
-            } else {
-                Spacer()
-                    .frame(minWidth: 0,
-                           maxWidth: .infinity,
-                           minHeight: lineWidth,
-                           maxHeight: lineWidth,
-                           alignment: .center)
-            }
-
-            if model.cellType.contains(.right, for: .design) {
-                Rectangle()
-                    .fill()
-                    .foregroundColor(.black)
-                    .frame(minWidth: 0,
-                           maxWidth: .infinity,
-                           minHeight: lineWidth,
-                           maxHeight: lineWidth,
-                           alignment: .center)
-            } else {
-                Spacer()
-                    .frame(minWidth: 0,
-                           maxWidth: .infinity,
-                           minHeight: lineWidth,
-                           maxHeight: lineWidth,
-                           alignment: .center)
-            }
-        }
-    }
-
-    var verticalLines: some View {
-        GeometryReader { geometry in
-            VStack(spacing: 0) {
-                if self.model.cellType.contains(.top, for: .design) {
-                    Rectangle()
-                        .fill()
-                        .foregroundColor(.black)
-                        .frame(minWidth: lineWidth,
-                               maxWidth: lineWidth,
-                               minHeight: 0,
-                               maxHeight: .infinity,
-                               alignment: .center)
-                } else {
-                    Spacer()
-                        .frame(width: lineWidth,
-                               height: (geometry.size.height - lineWidth) / 2,
-                               alignment: .top)
-                }
-
-                if self.model.cellType.contains(.bottom, for: .design) {
-                    Rectangle()
-                        .fill()
-                        .foregroundColor(.black)
-                        .frame(minWidth: lineWidth,
-                               maxWidth: lineWidth,
-                               minHeight: 0,
-                               maxHeight: .infinity,
-                               alignment: .center)
-                } else {
-                    Spacer()
-                        .frame(width: lineWidth,
-                               height: (geometry.size.height - lineWidth) / 2,
-                               alignment: .bottom)
-                }
-            }
+                .border(
+                    selected ? Color.blue : Color.black,
+                    width: selected ? 2 : 0.5
+            )
         }
     }
 
@@ -151,8 +78,84 @@ struct CellView: View {
     }
 }
 
+struct LinesView: View {
+
+    var model: Cell.CellType
+    var mode: Mode
+
+    var body: some View {
+        ZStack {
+            horizontalLines
+            verticalLines
+        }
+    }
+
+    var horizontalLines: some View {
+        HStack(spacing: 0) {
+
+            Rectangle()
+                .fill()
+                .foregroundColor(.black)
+                .frame(minWidth: 0,
+                       maxWidth: .infinity,
+                       minHeight: lineWidth,
+                       maxHeight: lineWidth,
+                       alignment: .center)
+                .opacity(model.contains(.left, for: mode) ? 1 : 0)
+
+            Rectangle()
+                .fill()
+                .foregroundColor(.black)
+                .frame(minWidth: 0,
+                       maxWidth: .infinity,
+                       minHeight: lineWidth,
+                       maxHeight: lineWidth,
+                       alignment: .center)
+                .opacity(model.contains(.right, for: mode) ? 1 : 0)
+        }
+    }
+
+    var verticalLines: some View {
+        GeometryReader { geometry in
+            VStack(spacing: 0) {
+                if self.model.contains(.top, for: self.mode) {
+                    Rectangle()
+                        .fill()
+                        .foregroundColor(.black)
+                        .frame(minWidth: lineWidth,
+                               maxWidth: lineWidth,
+                               minHeight: 0,
+                               maxHeight: .infinity,
+                               alignment: .center)
+                } else {
+                    Spacer()
+                        .frame(width: lineWidth,
+                               height: (geometry.size.height - lineWidth) / 2,
+                               alignment: .top)
+                }
+
+                if self.model.contains(.bottom, for: self.mode) {
+                    Rectangle()
+                        .fill()
+                        .foregroundColor(.black)
+                        .frame(minWidth: lineWidth,
+                               maxWidth: lineWidth,
+                               minHeight: 0,
+                               maxHeight: .infinity,
+                               alignment: .center)
+                } else {
+                    Spacer()
+                        .frame(width: lineWidth,
+                               height: (geometry.size.height - lineWidth) / 2,
+                               alignment: .bottom)
+                }
+            }
+        }
+    }
+}
+
 struct CellView_Previews: PreviewProvider {
     static var previews: some View {
-        CellView(model: Cell(row: 0, column: 0, cellType: .included(design: .lowerLeft, play: [])))
+        CellView(model: Cell(row: 0, column: 0, cellType: .included(design: .lowerLeft, play: [], specialMark: nil)), mode: .design, selected: false)
     }
 }

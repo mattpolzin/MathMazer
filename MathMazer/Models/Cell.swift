@@ -9,8 +9,9 @@
 import Foundation
 
 struct Cell: Hashable {
-    var cellType: CellType
     let position: Position
+
+    var cellType: CellType
 
     init(row: Int, column: Int, cellType: CellType = .excluded) {
         self.position = .init(row: row, column: column)
@@ -29,23 +30,32 @@ struct Cell: Hashable {
         return cellType.dotCount
     }
 
+    var specialMark: CellType.Included.SpecialMark? {
+        return cellType.specialMark
+    }
+
     enum CellType: Hashable {
         case excluded(dotCount: DotCount)
-        case included(design: Lines, play: Lines)
+        case included(Included)
 
         static let excluded: Self = .excluded(dotCount: .init(toTheRight: nil, below: nil))
+
+        static func included(design: Lines, play: Lines, specialMark: Included.SpecialMark?) -> Self {
+            return .included(
+                .init(
+                    designLines: design,
+                    playLines: play,
+                    specialMark: specialMark
+                )
+            )
+        }
 
         func contains(_ lines: Lines, for mode: Mode) -> Bool {
             switch self {
             case .excluded:
                 return false
-            case .included(design: let designLines, play: let playLines):
-                switch mode {
-                case .design:
-                    return designLines.contains(lines)
-                case .play:
-                    return playLines.contains(lines)
-                }
+            case .included(let included):
+                return included.contains(lines, for: mode)
             }
         }
 
@@ -60,8 +70,8 @@ struct Cell: Hashable {
             switch self {
             case .excluded:
                 return true
-            case .included(design: let designLines, play: let playLines):
-                return designLines == [] && playLines == []
+            case .included(let included):
+                return included.designLines == [] && included.playLines == []
             }
         }
 
@@ -72,24 +82,85 @@ struct Cell: Hashable {
             return count
         }
 
+        var specialMark: Included.SpecialMark? {
+            guard case .included(let included) = self else {
+                return nil
+            }
+            return included.specialMark
+        }
+
         mutating func toggle() {
             switch self {
             case .excluded:
-                self = .included(design: [], play: [])
+                self = .included(Included())
             case .included:
                 self = .excluded
             }
         }
 
-        enum Mode {
-            case design
-            case play
+        struct Included: Hashable {
+            var designLines: Lines
+            var playLines: Lines
+            var specialMark: SpecialMark?
+
+            init() {
+                self.init(designLines: [], playLines: [], specialMark: nil)
+            }
+
+            init(designLines: Lines, playLines: Lines, specialMark: SpecialMark?) {
+                self.designLines = designLines
+                self.playLines = playLines
+                self.specialMark = specialMark
+            }
+
+            enum SpecialMark: Hashable {
+                case start
+                case end
+
+                var toggled: SpecialMark {
+                    switch self {
+                    case .start:
+                        return .end
+                    case .end:
+                        return .start
+                    }
+                }
+            }
+
+            func contains(_ lines: Lines, for mode: Mode) -> Bool {
+                switch mode {
+                case .design:
+                    return designLines.contains(lines)
+                case .play:
+                    return playLines.contains(lines)
+                }
+            }
         }
     }
 
     struct Position: Hashable {
         let row: Int
         let column: Int
+    }
+
+    enum Side: Hashable {
+        case left
+        case right
+        case top
+        case bottom
+
+        var line: Lines {
+            switch self {
+            case .left:
+                return .left
+            case .right:
+                return .right
+            case .top:
+                return .top
+            case .bottom:
+                return .bottom
+            }
+        }
     }
 }
 
@@ -145,4 +216,38 @@ struct Lines: OptionSet, Hashable {
     /// |┃|
     /// ```
     static let vertical: Lines = [.top, .bottom]
+
+    static func between(_ side1: Cell.Side, _ side2: Cell.Side) -> Lines? {
+        switch (side1, side2) {
+        case (.left, .left),
+             (.right, .right),
+             (.top, .top),
+             (.bottom, .bottom):
+            return nil
+
+        case (.left, .right),
+             (.right, .left):
+            return .horizontal
+
+        case (.top, .bottom),
+             (.bottom, .top):
+            return .vertical
+
+        case (.left, .bottom),
+             (.bottom, .left):
+            return .lowerLeft
+
+        case (.left, .top),
+             (.top, .left):
+            return .upperLeft
+
+        case (.right, .bottom),
+             (.bottom, .right):
+            return .lowerRight
+
+        case (.right, .top),
+             (.top, .right):
+            return .upperRight
+        }
+    }
 }

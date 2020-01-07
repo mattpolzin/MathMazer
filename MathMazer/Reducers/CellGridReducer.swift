@@ -10,12 +10,20 @@ import Foundation
 import ReSwift
 
 func cellGridReducer(action: Action, state: AppState?) -> AppState {
-    let state = state ?? AppState()
+    var state = state ?? AppState()
+
+    // TODO: categorize all control bar actions and create a separate reducer for them
+    switch action {
+    case is ControlBar.TappedPlayToggle:
+        state.tool.toggle()
+    default:
+        break
+    }
 
     switch state.tool {
     case .mapMaker:
         return cellGridMapMakerReducer(action: action, state: state)
-    case .mazeMaker:
+    case .player:
         // TODO: mazeMakerReducer
         return state
     }
@@ -25,9 +33,15 @@ func cellGridMapMakerReducer(action: Action, state: AppState) -> AppState {
     var state = state
 
     if let cellAction = action as? CellAction {
-        let cell = state.cells[cellAction.position.row][cellAction.position.column]
+        let oldCell = state.cells[cellAction.position.row][cellAction.position.column]
+        let newCell = cellMapMakerReducer(action: cellAction, cell: oldCell)
 
-        state.cells[cellAction.position.row][cellAction.position.column] = cellMapMakerReducer(action: cellAction, cell: cell)
+        state.cells[cellAction.position.row][cellAction.position.column] = newCell
+
+        // if the cell did not change, select it
+        if oldCell == newCell {
+            state.selectedCellPosition = cellAction.position
+        }
     }
 
     state = excludedCellCountReducer(state: state)
@@ -40,15 +54,59 @@ func cellMapMakerReducer(action: CellAction, cell: Cell) -> Cell {
 
     switch action {
     case is Cell.TappedAction:
-        guard cell.cellType.hasNoLines else {
+        guard cell.hasNoLines && cell.specialMark == nil else {
             return cell
         }
         cell.cellType.toggle()
-        return cell
+
+    case is Cell.CtrlClickedAction:
+        guard case .included(let included) = cell.cellType else {
+            return cell
+        }
+        // delete design lines and special mark but leave play lines
+        cell.cellType = .included(.init(designLines: [], playLines: included.playLines, specialMark: nil))
+
+    case is Cell.ShiftClickedAction:
+        guard case .included(let included) = cell.cellType else {
+            return cell
+        }
+        // set a marker or toggle between them
+        cell.cellType = .included(
+            .init(
+                designLines: included.designLines,
+                playLines: included.playLines,
+                specialMark: included.specialMark?.toggled ?? .start
+            )
+        )
+
+    case let dragAction as Cell.DraggingAction:
+        guard case .included(let included) = cell.cellType,
+            var lines = Lines.between(dragAction.startClosestSide, dragAction.endClosestSide) else {
+            return cell
+        }
+
+        lines = cell.specialMark.map { specialMark in
+            switch specialMark {
+            case .start:
+                return dragAction.endClosestSide.line
+            case .end:
+                return dragAction.startClosestSide.line
+            }
+        } ?? lines
+
+        cell.cellType = .included(
+            .init(
+                designLines: lines,
+                playLines: included.playLines,
+                specialMark: included.specialMark
+            )
+        )
 
     default:
-        return cell
+        break
     }
+
+    return cell
 }
 
 func excludedCellCountReducer(state: AppState) -> AppState {
@@ -71,15 +129,21 @@ func excludedCellCountReducer(state: AppState) -> AppState {
 
             switch state.cells[rowIdx][columnIdx].cellType {
             case .excluded:
-                let rowCount = rowCountSinceLastExcludedCell > 0 ? rowCount : nil
-                let columnCount = columnCountsSinceLastExcludedCell[columnIdx] > 0 ? columnCounts[columnIdx] : nil
+                let rowCount = rowCountSinceLastExcludedCell > 0
+                    ? rowCount
+                    : nil
+                let columnCount = columnCountsSinceLastExcludedCell[columnIdx] > 0
+                    ? columnCounts[columnIdx]
+                    : nil
+
                 state.cells[rowIdx][columnIdx].cellType = .excluded(
                     dotCount: DotCount(toTheRight: rowCount, below: columnCount)
                 )
                 // finding an excluded cell resets the counts
                 resetAllCounts()
-            case .included(design: let designLines, play: _):
-                if !designLines.isEmpty {
+
+            case .included(let included):
+                if !included.designLines.isEmpty {
                     columnCounts[columnIdx] += 1
                     rowCount += 1
                 }
@@ -88,8 +152,6 @@ func excludedCellCountReducer(state: AppState) -> AppState {
             }
         }
     }
-
-//    print(state.cells.map { $0.map { ($0.dotCount) } })
 
     return state
 }

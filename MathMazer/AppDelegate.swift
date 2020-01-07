@@ -10,9 +10,12 @@ import Cocoa
 import SwiftUI
 import ReSwift
 
+let initialWidth = 12
+let initialHeight = 12
+
 let store = Store<AppState>(
     reducer: cellGridReducer,
-    state: .mock
+    state: AppState(width: initialWidth, height: initialHeight)
 )
 
 @NSApplicationMain
@@ -20,14 +23,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var window: NSWindow!
 
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
 
         // Create the window and set the content view. 
         window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
+            contentRect: NSRect(x: 0, y: 0, width: initialWidth * 30, height: initialHeight * 30),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)
         window.center()
