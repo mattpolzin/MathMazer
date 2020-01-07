@@ -9,7 +9,7 @@
 import ReSwift
 import Foundation
 
-struct AppState: StateType {
+struct AppState: StateType, Codable {
     var cells: [[Cell]]
 
     private(set) var cellSelections: CellSelections
@@ -43,19 +43,19 @@ struct AppState: StateType {
     var columns: Int { cells[0].count }
 
     func cell(at position: Cell.Position) -> Cell {
-        precondition(position.row > 0 && position.row < rows)
-        precondition(position.column > 0 && position.column < columns)
+        precondition(position.row >= 0 && position.row < rows)
+        precondition(position.column >= 0 && position.column < columns)
 
         return cells[position.row][position.column]
 //        set {
-//            precondition(position.row > 0 && position.row < rows)
-//            precondition(position.column > 0 && position.column < columns)
+//            precondition(position.row >= 0 && position.row < rows)
+//            precondition(position.column >= 0 && position.column < columns)
 //
 //            cells[position.row][position.column] = newValue
 //        }
     }
 
-    struct CellSelections: Equatable {
+    struct CellSelections: Equatable, Codable {
         var design: Cell.Position?
         var play: Cell.Position?
     }

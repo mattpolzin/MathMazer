@@ -46,9 +46,36 @@ struct CellView: View {
     }
 
     var specialMark: some View {
-        let color: Color? = model.specialMark.map { $0 == .start ? .green : .red }
+        typealias MarkColor = (Cell.CellType.Included.SpecialMark, Color)
+        let mark: MarkColor? = model.specialMark.map {
+            let color: Color
+            switch $0 {
+            case .start:
+                color = .green
+            case .end:
+                color = .red
 
-        return color?.clipShape(Circle().inset(by: lineWidth))
+            case .dot:
+                color = .black
+            case .blank:
+                color = .black
+            }
+            return ($0, color)
+        }
+
+        let shapedMark = mark.map { mark in
+            ZStack {
+                if mark.0 == .start || mark.0 == .end {
+                    mark.1.clipShape(Circle().inset(by: lineWidth))
+                } else if mark.0 == .dot {
+                    mark.1.clipShape(Circle()).frame(width: lineWidth, height: lineWidth, alignment: .center)
+                } else if mark.0 == .blank {
+                    mark.1
+                }
+            }
+        }
+
+        return shapedMark
     }
 
     var countText: some View {

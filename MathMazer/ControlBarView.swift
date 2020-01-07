@@ -14,24 +14,45 @@ struct ControlBarView: View {
     var model: ControlBar
 
     var body: some View {
-        HStack {
-            Spacer()
-            ZStack {
-                if model.buildMode == .design {
-                    Rectangle()
-                        .stroke(Color.white, lineWidth: 3)
-                        .foregroundColor(.clear)
-                        .cornerRadius(3)
-                        .frame(width: 60, height: 60, alignment: .center)
+        ZStack {
+            if model.buildMode == .design {
+                Rectangle()
+                    .stroke(Color.white, lineWidth: 3)
+                    .foregroundColor(.clear)
+                    .cornerRadius(3)
+                    .frame(width: 36, height: 36, alignment: .center)
+                Image("design")
+                    .renderingMode(.template)
+                    .frame(width: 30, height: 30, alignment: .center)
+                    .padding(10)
+                    .onTapGesture {
+                        store.dispatch(ControlBar.tappedPlayToggle)
                 }
-                Button(action: { store.dispatch(ControlBar.tappedPlayToggle) }) {
-                    Image("play_toggle")
+            } else {
+                Image("play")
+                    .renderingMode(.template)
+                    .frame(width: 30, height: 30, alignment: .center)
+                    .padding(10)
+                    .onTapGesture {
+                        store.dispatch(ControlBar.tappedPlayToggle)
+                }
+            }
+            HStack {
+                Spacer()
+                Button(action: { store.dispatch(ControlBar.tappedSave) }) {
+                    Image("save")
                         .renderingMode(.template)
-                        .frame(width: 50, height: 50, alignment: .center)
+                        .frame(width: 30, height: 30, alignment: .center)
+                        .padding(10)
+                }.buttonStyle(PlainButtonStyle())
+                Button(action: { store.dispatch(ControlBar.tappedOpen) }) {
+                    Image("open")
+                        .renderingMode(.template)
+                        .frame(width: 30, height: 30, alignment: .center)
                         .padding(10)
                 }.buttonStyle(PlainButtonStyle())
             }
-            Spacer()
         }
+
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import ReSwift
+import AppKit
 
 func cellGridReducer(action: Action, state: AppState?) -> AppState {
     var state = state ?? AppState()
@@ -16,6 +17,30 @@ func cellGridReducer(action: Action, state: AppState?) -> AppState {
     switch action {
     case is ControlBar.TappedPlayToggle:
         state.tool.toggle()
+    case is ControlBar.TappedSave:
+        let savePanel = NSSavePanel()
+        savePanel.begin { result in
+            guard result == .OK,
+                let url = savePanel.url else {
+                    return
+            }
+            store.dispatch(ControlBar.chose(file: url, for: .save))
+        }
+    case is ControlBar.TappedOpen:
+        let openPanel = NSOpenPanel()
+        openPanel.begin { result in
+            guard result == .OK,
+                let url = openPanel.url else {
+                    return
+            }
+            store.dispatch(ControlBar.chose(file: url, for: .open))
+        }
+    case let fileAction as ControlBar.ChoseFilename where fileAction.purpose == .save:
+        // TODO: error handling
+        try? JSONEncoder().encode(state).write(to: fileAction.file)
+    case let fileAction as ControlBar.ChoseFilename where fileAction.purpose == .open:
+        // TODO: error handling
+        state = (try? JSONDecoder().decode(AppState.self, from: Data(contentsOf: fileAction.file))) ?? state
     default:
         break
     }
@@ -61,13 +86,13 @@ func keyDownCellReducer(action: KeyDownInCellAction, state: AppState) -> AppStat
     let newPosition: Cell.Position
     switch action.key {
     case .rightArrow:
-        state.selectedCellPosition = selectedPosition.toTheRight(limitedBy: state.columns)
+        state.selectedCellPosition = selectedPosition.toTheRight(limitedBy: state.columns - 1)
     case .leftArrow:
         state.selectedCellPosition = selectedPosition.toTheLeft()
     case .upArrow:
         state.selectedCellPosition = selectedPosition.above()
     case .downArrow:
-        state.selectedCellPosition = selectedPosition.below(limitedBy: state.rows)
+        state.selectedCellPosition = selectedPosition.below(limitedBy: state.rows - 1)
     }
     newPosition = state.selectedCellPosition!
 
@@ -125,6 +150,12 @@ func cellMapMakerReducer(action: CellAction, cell: Cell, mode: Mode) -> Cell {
         }
         cell.cellType.toggle()
 
+    case is Cell.TappedAction where mode == .play:
+        guard case .included(let included) = cell.cellType else {
+            break
+        }
+        cell.cellType = .included(included.togglingDot())
+
     case is Cell.CtrlClickedAction:
         guard case .included(let included) = cell.cellType else {
             break
@@ -143,13 +174,14 @@ func cellMapMakerReducer(action: CellAction, cell: Cell, mode: Mode) -> Cell {
             return cell
         }
         // set a marker or toggle between them
-        cell.cellType = .included(
-            .init(
-                designLines: included.designLines,
-                playLines: included.playLines,
-                specialMark: included.specialMark?.toggled ?? .start
-            )
-        )
+        cell.cellType = .included(included.togglingMarkForDesign())
+
+    case is Cell.ShiftClickedAction where mode == .play:
+        guard case .included(let included) = cell.cellType else {
+            return cell
+        }
+        // set a marker or toggle between them
+        cell.cellType = .included(included.togglingBlank())
 
     case let dragAction as Cell.DraggingAction:
         guard case .included(let included) = cell.cellType,
@@ -157,12 +189,14 @@ func cellMapMakerReducer(action: CellAction, cell: Cell, mode: Mode) -> Cell {
             break
         }
 
-        lines = cell.specialMark.map { specialMark in
+        lines = cell.specialMark.flatMap { specialMark in
             switch specialMark {
             case .start:
                 return dragAction.endClosestSide.line
             case .end:
                 return dragAction.startClosestSide.line
+            default:
+                return nil
             }
         } ?? lines
 

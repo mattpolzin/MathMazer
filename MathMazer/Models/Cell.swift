@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Cell: Hashable {
+struct Cell: Codable, Hashable {
     let position: Position
 
     var cellType: CellType
@@ -34,7 +34,7 @@ struct Cell: Hashable {
         return cellType.specialMark
     }
 
-    enum CellType: Hashable {
+    enum CellType: Codable, Hashable {
         case excluded(dotCount: DotCount)
         case included(Included)
 
@@ -98,7 +98,7 @@ struct Cell: Hashable {
             }
         }
 
-        struct Included: Hashable {
+        struct Included: Codable, Hashable {
             var designLines: Lines
             var playLines: Lines
             var specialMark: SpecialMark?
@@ -113,15 +113,19 @@ struct Cell: Hashable {
                 self.specialMark = specialMark
             }
 
-            enum SpecialMark: Hashable {
+            enum SpecialMark: String, Codable, Hashable {
                 case start
                 case end
+                case dot
+                case blank
 
-                var toggled: SpecialMark {
+                var toggledForDesign: SpecialMark {
                     switch self {
                     case .start:
                         return .end
                     case .end:
+                        return .start
+                    case .dot, .blank:
                         return .start
                     }
                 }
@@ -135,10 +139,34 @@ struct Cell: Hashable {
                     return playLines.contains(lines)
                 }
             }
+
+            func togglingMarkForDesign() -> Self {
+                .init(
+                    designLines: designLines,
+                    playLines: playLines,
+                    specialMark: specialMark?.toggledForDesign ?? .start
+                )
+            }
+
+            func togglingDot() -> Self {
+                .init(
+                    designLines: designLines,
+                    playLines: playLines,
+                    specialMark: specialMark == nil ? .dot : nil
+                )
+            }
+
+            func togglingBlank() -> Self {
+                .init(
+                    designLines: designLines,
+                    playLines: playLines,
+                    specialMark: specialMark == nil ? .blank : nil
+                )
+            }
         }
     }
 
-    struct Position: Hashable {
+    struct Position: Codable, Hashable {
         let row: Int
         let column: Int
 
@@ -159,7 +187,7 @@ struct Cell: Hashable {
         }
     }
 
-    enum Side: Hashable {
+    enum Side: String, Codable, Hashable {
         case left
         case right
         case top
@@ -180,7 +208,7 @@ struct Cell: Hashable {
     }
 }
 
-struct DotCount: Hashable {
+struct DotCount: Codable, Hashable {
     /// Number of dots (cells the maze crosses through)
     /// to the right.
     let toTheRight: Int?
@@ -193,7 +221,7 @@ struct DotCount: Hashable {
     }
 }
 
-struct Lines: OptionSet, Hashable {
+struct Lines: OptionSet, Codable, Hashable {
     let rawValue: Int
 
     static let left = Lines(rawValue: 1 << 0)
@@ -290,6 +318,33 @@ struct Lines: OptionSet, Hashable {
             return .bottom
         case .downArrow:
             return .top
+        }
+    }
+}
+
+extension Cell.CellType {
+    enum CodingKeys: String, CodingKey {
+        case included
+        case dotCount
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        if container.contains(.included) {
+            self = .included(try container.decode(Included.self, forKey: .included))
+        } else {
+            self = .excluded(dotCount: try container.decode(DotCount.self, forKey: .dotCount))
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        switch self {
+        case .included(let included):
+            try container.encode(included, forKey: .included)
+        case .excluded(dotCount: let count):
+            try container.encode(count, forKey: .dotCount)
         }
     }
 }
