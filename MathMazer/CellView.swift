@@ -18,6 +18,9 @@ struct CellView: View {
     var mode: Mode
     var selected: Bool
 
+    var borderColor: Color { selected ? .blue : .black }
+    var borderWidth: CGFloat { selected ? 2.0 : 0.5 }
+
     var body: some View {
         ZStack {
 
@@ -28,7 +31,9 @@ struct CellView: View {
                 countText
             } else {
                 Color.white
-                model.specialMark.map({ $0 == .start ? Color.green : Color.red })?.clipShape(Circle().inset(by: lineWidth))
+
+                // start or end mark
+                specialMark
 
                 LinesView(model: model.cellType, mode: mode)
             }
@@ -36,11 +41,14 @@ struct CellView: View {
             // border
             Rectangle()
                 .fill(Color.clear)
-                .border(
-                    selected ? Color.blue : Color.black,
-                    width: selected ? 2 : 0.5
-            )
+                .border(borderColor, width: borderWidth)
         }
+    }
+
+    var specialMark: some View {
+        let color: Color? = model.specialMark.map { $0 == .start ? .green : .red }
+
+        return color?.clipShape(Circle().inset(by: lineWidth))
     }
 
     var countText: some View {

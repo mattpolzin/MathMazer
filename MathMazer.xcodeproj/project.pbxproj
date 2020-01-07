@@ -10,6 +10,8 @@
 		C903217323C2E433003811A4 /* ControlBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217223C2E433003811A4 /* ControlBarView.swift */; };
 		C903217523C2E597003811A4 /* ControlBar+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217423C2E597003811A4 /* ControlBar+Actions.swift */; };
 		C903217723C2EB3D003811A4 /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217623C2EB3D003811A4 /* ControlBar.swift */; };
+		C903217923C428A7003811A4 /* KeyTrackingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217823C428A6003811A4 /* KeyTrackingWindow.swift */; };
+		C903217B23C42E26003811A4 /* KeyDownMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217A23C42E26003811A4 /* KeyDownMiddleware.swift */; };
 		C9490BD823C1AA1A003F6159 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BD723C1AA1A003F6159 /* AppDelegate.swift */; };
 		C9490BDA23C1AA1A003F6159 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BD923C1AA1A003F6159 /* ContentView.swift */; };
 		C9490BDC23C1AA1C003F6159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9490BDB23C1AA1C003F6159 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 		C903217223C2E433003811A4 /* ControlBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarView.swift; sourceTree = "<group>"; };
 		C903217423C2E597003811A4 /* ControlBar+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ControlBar+Actions.swift"; sourceTree = "<group>"; };
 		C903217623C2EB3D003811A4 /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
+		C903217823C428A6003811A4 /* KeyTrackingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTrackingWindow.swift; sourceTree = "<group>"; };
+		C903217A23C42E26003811A4 /* KeyDownMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDownMiddleware.swift; sourceTree = "<group>"; };
 		C9490BD423C1AA1A003F6159 /* MathMazer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathMazer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9490BD723C1AA1A003F6159 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9490BD923C1AA1A003F6159 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 				C9490C0023C2545D003F6159 /* State */,
 				C9490BF823C1AAED003F6159 /* Models */,
 				C9490BD723C1AA1A003F6159 /* AppDelegate.swift */,
+				C903217823C428A6003811A4 /* KeyTrackingWindow.swift */,
 				C9490BD923C1AA1A003F6159 /* ContentView.swift */,
 				C9490BFB23C1B626003F6159 /* CellView.swift */,
 				C903217223C2E433003811A4 /* ControlBarView.swift */,
@@ -113,6 +118,7 @@
 				C9490BE323C1AA1C003F6159 /* Info.plist */,
 				C9490BE423C1AA1C003F6159 /* MathMazer.entitlements */,
 				C9490BDD23C1AA1C003F6159 /* Preview Content */,
+				C903217A23C42E26003811A4 /* KeyDownMiddleware.swift */,
 			);
 			path = MathMazer;
 			sourceTree = "<group>";
@@ -285,6 +291,8 @@
 				C9490BDA23C1AA1A003F6159 /* ContentView.swift in Sources */,
 				C903217523C2E597003811A4 /* ControlBar+Actions.swift in Sources */,
 				C9490C0423C25AC0003F6159 /* Tool.swift in Sources */,
+				C903217923C428A7003811A4 /* KeyTrackingWindow.swift in Sources */,
+				C903217B23C42E26003811A4 /* KeyDownMiddleware.swift in Sources */,
 				C903217323C2E433003811A4 /* ControlBarView.swift in Sources */,
 				C9490C0723C25B22003F6159 /* CellGridReducer.swift in Sources */,
 				C9490BD823C1AA1A003F6159 /* AppDelegate.swift in Sources */,

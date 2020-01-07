@@ -12,12 +12,52 @@ import Foundation
 struct AppState: StateType {
     var cells: [[Cell]]
 
-    var selectedCellPosition: Cell.Position?
+    private(set) var cellSelections: CellSelections
+
+    var selectedCellPosition: Cell.Position? {
+        get {
+            switch tool.mode {
+            case .design:
+                return cellSelections.design
+            case .play:
+                return cellSelections.play
+            }
+        }
+        set {
+            switch tool.mode {
+            case .design:
+                cellSelections.design = newValue
+            case .play:
+                cellSelections.play = newValue
+            }
+        }
+    }
 
     var tool: Tool
 
     var controlBar: ControlBar {
         ControlBar(buildMode: tool.mode)
+    }
+
+    var rows: Int { cells.count }
+    var columns: Int { cells[0].count }
+
+    func cell(at position: Cell.Position) -> Cell {
+        precondition(position.row > 0 && position.row < rows)
+        precondition(position.column > 0 && position.column < columns)
+
+        return cells[position.row][position.column]
+//        set {
+//            precondition(position.row > 0 && position.row < rows)
+//            precondition(position.column > 0 && position.column < columns)
+//
+//            cells[position.row][position.column] = newValue
+//        }
+    }
+
+    struct CellSelections: Equatable {
+        var design: Cell.Position?
+        var play: Cell.Position?
     }
 }
 
@@ -45,7 +85,7 @@ extension AppState {
 
         tool = .mapMaker
 
-        selectedCellPosition = nil
+        cellSelections = .init()
     }
 
     static let mock: Self = .init(
@@ -100,6 +140,7 @@ extension AppState {
                 .init(row: 6, column: 4, cellType: .excluded)
             ]
         ],
+        cellSelections: .init(),
         tool: .mapMaker
     )
 }

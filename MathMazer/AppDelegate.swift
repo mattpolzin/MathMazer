@@ -15,7 +15,8 @@ let initialHeight = 12
 
 let store = Store<AppState>(
     reducer: cellGridReducer,
-    state: AppState(width: initialWidth, height: initialHeight)
+    state: AppState(width: initialWidth, height: initialHeight),
+    middleware: [keyDownMiddleware]
 )
 
 @NSApplicationMain
@@ -28,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let contentView = ContentView()
 
         // Create the window and set the content view. 
-        window = NSWindow(
+        window = KeyTrackingWindow(
             contentRect: NSRect(x: 0, y: 0, width: initialWidth * 30, height: initialHeight * 30),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered, defer: false)

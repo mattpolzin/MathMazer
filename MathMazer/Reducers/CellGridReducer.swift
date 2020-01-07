@@ -20,13 +20,14 @@ func cellGridReducer(action: Action, state: AppState?) -> AppState {
         break
     }
 
-    switch state.tool {
-    case .mapMaker:
-        return cellGridMapMakerReducer(action: action, state: state)
-    case .player:
-        // TODO: mazeMakerReducer
-        return state
+    state = cellGridMapMakerReducer(action: action, state: state)
+
+    // TODO: rename to Cell.KeyDownAction
+    if let keyDownAction = action as? KeyDownInCellAction {
+        state = keyDownCellReducer(action: keyDownAction, state: state)
     }
+
+    return state
 }
 
 func cellGridMapMakerReducer(action: Action, state: AppState) -> AppState {
@@ -34,12 +35,12 @@ func cellGridMapMakerReducer(action: Action, state: AppState) -> AppState {
 
     if let cellAction = action as? CellAction {
         let oldCell = state.cells[cellAction.position.row][cellAction.position.column]
-        let newCell = cellMapMakerReducer(action: cellAction, cell: oldCell)
+        let newCell = cellMapMakerReducer(action: cellAction, cell: oldCell, mode: state.tool.mode)
 
         state.cells[cellAction.position.row][cellAction.position.column] = newCell
 
-        // if the cell did not change, select it
-        if oldCell == newCell {
+        // if the cell has a special mark, select it.
+        if state.cell(at: cellAction.position).specialMark != nil && action is Cell.TappedAction {
             state.selectedCellPosition = cellAction.position
         }
     }
@@ -49,24 +50,95 @@ func cellGridMapMakerReducer(action: Action, state: AppState) -> AppState {
     return state
 }
 
-func cellMapMakerReducer(action: CellAction, cell: Cell) -> Cell {
+func keyDownCellReducer(action: KeyDownInCellAction, state: AppState) -> AppState {
+    guard let selectedPosition = state.selectedCellPosition else {
+        return state
+    }
+
+    var state = state
+
+    let oldPosition = selectedPosition
+    let newPosition: Cell.Position
+    switch action.key {
+    case .rightArrow:
+        state.selectedCellPosition = selectedPosition.toTheRight(limitedBy: state.columns)
+    case .leftArrow:
+        state.selectedCellPosition = selectedPosition.toTheLeft()
+    case .upArrow:
+        state.selectedCellPosition = selectedPosition.above()
+    case .downArrow:
+        state.selectedCellPosition = selectedPosition.below(limitedBy: state.rows)
+    }
+    newPosition = state.selectedCellPosition!
+
+    guard case .included(let oldIncluded) = state.cell(at: oldPosition).cellType else {
+        return state
+    }
+
+    let oldIncludedDesignLines = state.tool.mode == .design
+        ? oldIncluded.designLines.union(Lines.inDirection(of: action.key))
+        : oldIncluded.designLines
+
+    let oldIncludedPlayLines = state.tool.mode == .play
+        ? oldIncluded.playLines.union(Lines.inDirection(of: action.key))
+        : oldIncluded.playLines
+
+    state.cells[oldPosition.row][oldPosition.column].cellType = .included(
+        .init(
+            designLines: oldIncludedDesignLines,
+            playLines: oldIncludedPlayLines,
+            specialMark: oldIncluded.specialMark
+        )
+    )
+
+    guard oldPosition != newPosition,
+        case .included(let newIncluded) = state.cell(at: newPosition).cellType else {
+            return state
+    }
+
+    let newIncludedDesignLines = state.tool.mode == .design
+        ? newIncluded.designLines.union(Lines.away(from: action.key))
+        : newIncluded.designLines
+
+    let newIncludedPlayLines = state.tool.mode == .play
+        ? newIncluded.playLines.union(Lines.away(from: action.key))
+        : newIncluded.playLines
+
+    state.cells[newPosition.row][newPosition.column].cellType = .included(
+        .init(
+            designLines: newIncludedDesignLines,
+            playLines: newIncludedPlayLines,
+            specialMark: newIncluded.specialMark
+        )
+    )
+
+    return state
+}
+
+func cellMapMakerReducer(action: CellAction, cell: Cell, mode: Mode) -> Cell {
     var cell = cell
 
     switch action {
-    case is Cell.TappedAction:
+    case is Cell.TappedAction where mode == .design:
         guard cell.hasNoLines && cell.specialMark == nil else {
-            return cell
+            break
         }
         cell.cellType.toggle()
 
     case is Cell.CtrlClickedAction:
         guard case .included(let included) = cell.cellType else {
-            return cell
+            break
         }
-        // delete design lines and special mark but leave play lines
-        cell.cellType = .included(.init(designLines: [], playLines: included.playLines, specialMark: nil))
+        // delete lines (and special mark in design mode)
+        cell.cellType = .included(
+            .init(
+                designLines: mode == .design ? [] : included.designLines,
+                playLines: mode == .play ? [] : included.playLines,
+                specialMark: mode == .design ? nil : included.specialMark
+            )
+        )
 
-    case is Cell.ShiftClickedAction:
+    case is Cell.ShiftClickedAction where mode == .design:
         guard case .included(let included) = cell.cellType else {
             return cell
         }
@@ -82,7 +154,7 @@ func cellMapMakerReducer(action: CellAction, cell: Cell) -> Cell {
     case let dragAction as Cell.DraggingAction:
         guard case .included(let included) = cell.cellType,
             var lines = Lines.between(dragAction.startClosestSide, dragAction.endClosestSide) else {
-            return cell
+            break
         }
 
         lines = cell.specialMark.map { specialMark in
@@ -96,8 +168,8 @@ func cellMapMakerReducer(action: CellAction, cell: Cell) -> Cell {
 
         cell.cellType = .included(
             .init(
-                designLines: lines,
-                playLines: included.playLines,
+                designLines: mode == .design ? lines : included.designLines,
+                playLines: mode == .play ? lines : included.playLines,
                 specialMark: included.specialMark
             )
         )

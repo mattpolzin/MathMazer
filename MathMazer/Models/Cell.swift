@@ -141,6 +141,22 @@ struct Cell: Hashable {
     struct Position: Hashable {
         let row: Int
         let column: Int
+
+        func toTheLeft(limitedBy limit: Int = 0) -> Self {
+            return .init(row: row, column: max(limit, column - 1))
+        }
+
+        func toTheRight(limitedBy limit: Int) -> Self {
+            return .init(row: row, column: min(limit, column + 1))
+        }
+
+        func below(limitedBy limit: Int) -> Self {
+            return .init(row: min(limit, row + 1), column: column)
+        }
+
+        func above(limitedBy limit: Int = 0 ) -> Self {
+            return .init(row: max(limit, row - 1), column: column)
+        }
     }
 
     enum Side: Hashable {
@@ -248,6 +264,32 @@ struct Lines: OptionSet, Hashable {
         case (.right, .top),
              (.top, .right):
             return .upperRight
+        }
+    }
+
+    static func inDirection(of key: KeyDownAction.Key) -> Self {
+        switch key {
+        case .leftArrow:
+            return .left
+        case .rightArrow:
+            return .right
+        case .upArrow:
+            return .top
+        case .downArrow:
+            return .bottom
+        }
+    }
+
+    static func away(from key: KeyDownAction.Key) -> Self {
+        switch key {
+        case .leftArrow:
+            return .right
+        case .rightArrow:
+            return .left
+        case .upArrow:
+            return .bottom
+        case .downArrow:
+            return .top
         }
     }
 }
