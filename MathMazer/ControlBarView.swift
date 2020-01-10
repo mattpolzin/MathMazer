@@ -11,7 +11,7 @@ import SwiftUI
 
 struct ControlBarView: View {
 
-    var model: ControlBar
+    var model: ControlBarModel
 
     var body: some View {
         ZStack {
@@ -26,7 +26,7 @@ struct ControlBarView: View {
                     .frame(width: 30, height: 30, alignment: .center)
                     .padding(10)
                     .onTapGesture {
-                        store.dispatch(ControlBar.tappedPlayToggle)
+                        store.dispatch(ControlBarModel.tappedPlayToggle)
                 }
             } else {
                 Image("play")
@@ -34,24 +34,24 @@ struct ControlBarView: View {
                     .frame(width: 30, height: 30, alignment: .center)
                     .padding(10)
                     .onTapGesture {
-                        store.dispatch(ControlBar.tappedPlayToggle)
+                        store.dispatch(ControlBarModel.tappedPlayToggle)
                 }
             }
             HStack {
                 Spacer()
-                Button(action: { store.dispatch(ControlBar.tappedReset) }) {
+                Button(action: { store.dispatch(ControlBarModel.tappedReset) }) {
                     Image("reset")
                         .renderingMode(.template)
                         .frame(width: 30, height: 30, alignment: .center)
                         .padding(10)
                 }.buttonStyle(PlainButtonStyle())
-                Button(action: { store.dispatch(ControlBar.tappedSave) }) {
+                Button(action: { store.dispatch(ControlBarModel.tappedSave) }) {
                     Image("save")
                         .renderingMode(.template)
                         .frame(width: 30, height: 30, alignment: .center)
                         .padding(10)
                 }.buttonStyle(PlainButtonStyle())
-                Button(action: { store.dispatch(ControlBar.tappedOpen) }) {
+                Button(action: { store.dispatch(ControlBarModel.tappedOpen) }) {
                     Image("open")
                         .renderingMode(.template)
                         .frame(width: 30, height: 30, alignment: .center)

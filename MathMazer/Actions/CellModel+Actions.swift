@@ -1,5 +1,5 @@
 //
-//  Cell+Actions.swift
+//  CellModel+Actions.swift
 //  MathMazer
 //
 //  Created by Mathew Polzin on 1/5/20.
@@ -10,40 +10,40 @@ import Foundation
 import ReSwift
 
 protocol CellAction: Action {
-    var position: Cell.Position { get }
+    var position: GridPosition { get }
 }
 
-extension Cell {
+extension CellModel {
     struct TappedAction: CellAction {
-        let position: Position
+        let position: GridPosition
 
-        fileprivate init(position: Position) {
+        fileprivate init(position: GridPosition) {
             self.position = position
         }
     }
 
     struct CtrlClickedAction: CellAction {
-        let position: Position
+        let position: GridPosition
 
-        fileprivate init(position: Position) {
+        fileprivate init(position: GridPosition) {
             self.position = position
         }
     }
 
     struct ShiftClickedAction: CellAction {
-        let position: Position
+        let position: GridPosition
 
-        fileprivate init(position: Position) {
+        fileprivate init(position: GridPosition) {
             self.position = position
         }
     }
 
     struct DraggingAction: CellAction {
-        let position: Position
+        let position: GridPosition
         let startClosestSide: Side
         let endClosestSide: Side
 
-        fileprivate init(position: Position, startClosestSide: Side, endClosestSide: Side) {
+        fileprivate init(position: GridPosition, startClosestSide: Side, endClosestSide: Side) {
             self.position = position
             self.startClosestSide = startClosestSide
             self.endClosestSide = endClosestSide
@@ -51,7 +51,7 @@ extension Cell {
     }
 
     struct KeyDownAction: CellAction {
-        let position: Cell.Position
+        let position: GridPosition
         let key: MathMazer.KeyDownAction.Key
     }
 

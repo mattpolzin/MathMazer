@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Cell: Codable, Hashable {
-    let position: Position
+struct CellState: Codable, Hashable {
+    let position: GridPosition
 
     var cellType: CellType
 
@@ -34,7 +34,7 @@ struct Cell: Codable, Hashable {
         return cellType.dotCount
     }
 
-    var specialMark: CellType.Included.SpecialMark? {
+    var specialMark: SpecialMark? {
         return cellType.specialMark
     }
 
@@ -60,7 +60,7 @@ struct Cell: Codable, Hashable {
 
         static let excluded: Self = .excluded(dotCount: .init(toTheRight: nil, below: nil))
 
-        static func included(design: LegalLines, play: LegalLines, specialMark: Included.SpecialMark?) -> Self {
+        static func included(design: LegalLines, play: LegalLines, specialMark: SpecialMark?) -> Self {
             return .included(
                 .init(
                     designLines: design,
@@ -148,7 +148,7 @@ struct Cell: Codable, Hashable {
             return count
         }
 
-        var specialMark: Included.SpecialMark? {
+        var specialMark: SpecialMark? {
             guard case .included(let included) = self else {
                 return nil
             }
@@ -177,24 +177,6 @@ struct Cell: Codable, Hashable {
                 self.designLines = designLines
                 self.playLines = playLines
                 self.specialMark = specialMark
-            }
-
-            enum SpecialMark: String, Codable, Hashable {
-                case start
-                case end
-                case dot
-                case blank
-
-                var toggledForDesign: SpecialMark {
-                    switch self {
-                    case .start:
-                        return .end
-                    case .end:
-                        return .start
-                    case .dot, .blank:
-                        return .start
-                    }
-                }
             }
 
             func contains(_ lines: Lines, for mode: Mode) -> Bool {
@@ -236,47 +218,6 @@ struct Cell: Codable, Hashable {
                             ? nil
                             : specialMark
                 )
-            }
-        }
-    }
-
-    struct Position: Codable, Hashable {
-        let row: Int
-        let column: Int
-
-        func toTheLeft(limitedBy limit: Int = 0) -> Self {
-            return .init(row: row, column: max(limit, column - 1))
-        }
-
-        func toTheRight(limitedBy limit: Int) -> Self {
-            return .init(row: row, column: min(limit, column + 1))
-        }
-
-        func below(limitedBy limit: Int) -> Self {
-            return .init(row: min(limit, row + 1), column: column)
-        }
-
-        func above(limitedBy limit: Int = 0 ) -> Self {
-            return .init(row: max(limit, row - 1), column: column)
-        }
-    }
-
-    enum Side: String, Codable, Hashable {
-        case left
-        case right
-        case top
-        case bottom
-
-        var line: Lines {
-            switch self {
-            case .left:
-                return .left
-            case .right:
-                return .right
-            case .top:
-                return .top
-            case .bottom:
-                return .bottom
             }
         }
     }
@@ -382,7 +323,7 @@ struct Lines: OptionSet, Codable, Hashable {
     /// ```
     static let vertical: Lines = [.top, .bottom]
 
-    static func between(_ side1: Cell.Side, _ side2: Cell.Side) -> Lines? {
+    static func between(_ side1: Side, _ side2: Side) -> Lines? {
         switch (side1, side2) {
         case (.left, .left),
              (.right, .right),
@@ -443,7 +384,7 @@ struct Lines: OptionSet, Codable, Hashable {
     }
 }
 
-extension Cell.CellType {
+extension CellState.CellType {
     enum CodingKeys: String, CodingKey {
         case included
         case dotCount

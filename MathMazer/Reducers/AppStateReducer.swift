@@ -19,7 +19,7 @@ func cellGridReducer(action: Action, state: AppState?) -> AppState {
 
     state = cellGridMapMakerReducer(action: action, state: state)
 
-    if let keyDownAction = action as? Cell.KeyDownAction {
+    if let keyDownAction = action as? CellModel.KeyDownAction {
         state = keyDownCellReducer(action: keyDownAction, state: state)
     }
 
@@ -41,7 +41,7 @@ func cellGridMapMakerReducer(action: Action, state: AppState) -> AppState {
         let currentCell = state.cell(at: cellAction.position)
         let mode = state.tool.mode
         if (currentCell.specialMark != nil && currentCell.specialMark != .blank) || !currentCell.hasNoLines(in: mode) {
-            if action is Cell.TappedAction {
+            if action is CellModel.TappedAction {
                 state.selectedCellPosition = cellAction.position
             }
         } else if mode != .design,
@@ -54,7 +54,7 @@ func cellGridMapMakerReducer(action: Action, state: AppState) -> AppState {
     return state
 }
 
-func keyDownCellReducer(action: Cell.KeyDownAction, state: AppState) -> AppState {
+func keyDownCellReducer(action: CellModel.KeyDownAction, state: AppState) -> AppState {
     guard let selectedPosition = state.selectedCellPosition else {
         return state
     }
@@ -62,7 +62,7 @@ func keyDownCellReducer(action: Cell.KeyDownAction, state: AppState) -> AppState
     var state = state
 
     let oldPosition = selectedPosition
-    let newPosition: Cell.Position
+    let newPosition: GridPosition
     switch action.key {
     case .rightArrow:
         newPosition = selectedPosition.toTheRight(limitedBy: state.columns - 1)
@@ -127,24 +127,24 @@ func keyDownCellReducer(action: Cell.KeyDownAction, state: AppState) -> AppState
     return state
 }
 
-func cellMapMakerReducer(action: CellAction, cell: Cell, mode: Mode) -> Cell {
+func cellMapMakerReducer(action: CellAction, cell: CellState, mode: Mode) -> CellState {
     var cell = cell
 
     switch action {
-    case is Cell.TappedAction where mode == .design:
+    case is CellModel.TappedAction where mode == .design:
         guard cell.hasNoLines && cell.specialMark == nil else {
             break
         }
         cell.cellType.toggle()
 
-    case is Cell.TappedAction where mode == .play:
+    case is CellModel.TappedAction where mode == .play:
         guard case .included(let included) = cell.cellType,
             included.specialMark == nil else {
                 break
         }
         cell.cellType = .included(included.togglingDot())
 
-    case is Cell.CtrlClickedAction:
+    case is CellModel.CtrlClickedAction:
         guard case .included(let included) = cell.cellType else {
             break
         }
@@ -159,21 +159,21 @@ func cellMapMakerReducer(action: CellAction, cell: Cell, mode: Mode) -> Cell {
             )
         )
 
-    case is Cell.ShiftClickedAction where mode == .design:
+    case is CellModel.ShiftClickedAction where mode == .design:
         guard case .included(let included) = cell.cellType else {
             return cell
         }
         // set a marker or toggle between them
         cell.cellType = .included(included.togglingMarkForDesign())
 
-    case is Cell.ShiftClickedAction where mode == .play:
+    case is CellModel.ShiftClickedAction where mode == .play:
         guard case .included(let included) = cell.cellType else {
             return cell
         }
         // set a marker or toggle between them
         cell.cellType = .included(included.togglingBlank())
 
-    case let dragAction as Cell.DraggingAction:
+    case let dragAction as CellModel.DraggingAction:
         guard case .included(let included) = cell.cellType,
             var lines = Lines.between(dragAction.startClosestSide, dragAction.endClosestSide).flatMap(LegalLines.init) else {
             break

@@ -15,12 +15,10 @@ fileprivate let dotSize: CGFloat = 15
 
 struct CellView: View {
 
-    var model: Cell
-    var mode: Mode
-    var selected: Bool
+    var model: CellModel
 
-    var borderColor: Color { selected ? .blue : .gray }
-    var borderWidth: CGFloat { selected ? 2.0 : 0.5 }
+    var borderColor: Color { model.isSelected ? .blue : .gray }
+    var borderWidth: CGFloat { model.isSelected ? 2.0 : 0.5 }
 
     var body: some View {
         ZStack {
@@ -29,7 +27,7 @@ struct CellView: View {
             model.isExcluded ? Color.gray : Color.white
 
             // border
-            if model.specialMark != .blank {
+            if model.hasBorder {
                 Rectangle()
                     .fill(Color.clear)
                     .border(borderColor, width: borderWidth)
@@ -42,13 +40,13 @@ struct CellView: View {
                 // start or end mark
                 specialMark
 
-                LinesView(model: model.cellType, mode: mode)
+                LinesView(model: model.lines)
             }
         }
     }
 
     var specialMark: some View {
-        typealias MarkColor = (Cell.CellType.Included.SpecialMark, Color)
+        typealias MarkColor = (SpecialMark, Color)
         let mark: MarkColor? = model.specialMark.map {
             let color: Color
             switch $0 {
@@ -83,7 +81,7 @@ struct CellView: View {
 
     var countText: some View {
         ZStack {
-            model.dotCount?.toTheRight.map { count in
+            model.horizontalDotCount.map { count in
                 VStack {
                     Text("\(count)")
                         .foregroundColor(.black)
@@ -93,7 +91,7 @@ struct CellView: View {
                 }
             }
 
-            model.dotCount?.below.map { count in
+            model.verticalDotCount.map { count in
                 HStack {
                     Text("\(count)")
                         .foregroundColor(.black)
@@ -103,7 +101,7 @@ struct CellView: View {
                 }
             }
 
-            if model.dotCount?.isBidirectional ?? false {
+            if model.hasBidirectionalDotCount {
                 GeometryReader { geometry in
                     Path { path in
                         path.move(to: .init(x: geometry.size.width / 2, y: (geometry.size.height * 2) / 5))
@@ -118,8 +116,7 @@ struct CellView: View {
 
 struct LinesView: View {
 
-    var model: Cell.CellType
-    var mode: Mode
+    var model: Lines
 
     var body: some View {
         ZStack {
@@ -139,7 +136,7 @@ struct LinesView: View {
                        minHeight: lineWidth,
                        maxHeight: lineWidth,
                        alignment: .center)
-                .opacity(model.contains(.left, for: mode) ? 1 : 0)
+                .opacity(model.contains(.left) ? 1 : 0)
 
             Rectangle()
                 .fill()
@@ -149,14 +146,14 @@ struct LinesView: View {
                        minHeight: lineWidth,
                        maxHeight: lineWidth,
                        alignment: .center)
-                .opacity(model.contains(.right, for: mode) ? 1 : 0)
+                .opacity(model.contains(.right) ? 1 : 0)
         }
     }
 
     var verticalLines: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
-                if self.model.contains(.top, for: self.mode) {
+                if self.model.contains(.top) {
                     Rectangle()
                         .fill()
                         .foregroundColor(.black)
@@ -172,7 +169,7 @@ struct LinesView: View {
                                alignment: .top)
                 }
 
-                if self.model.contains(.bottom, for: self.mode) {
+                if self.model.contains(.bottom) {
                     Rectangle()
                         .fill()
                         .foregroundColor(.black)
@@ -194,6 +191,6 @@ struct LinesView: View {
 
 struct CellView_Previews: PreviewProvider {
     static var previews: some View {
-        CellView(model: Cell(row: 0, column: 0, cellType: .included(design: .noLines, play: .noLines, specialMark: nil)), mode: .design, selected: false)
+        CellView(model: CellModel(state: CellState(row: 0, column: 0, cellType: .included(design: .noLines, play: .noLines, specialMark: nil)), for: .design, selected: false))
     }
 }

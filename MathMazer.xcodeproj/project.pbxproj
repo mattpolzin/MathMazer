@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C903217323C2E433003811A4 /* ControlBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217223C2E433003811A4 /* ControlBarView.swift */; };
-		C903217523C2E597003811A4 /* ControlBar+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217423C2E597003811A4 /* ControlBar+Actions.swift */; };
-		C903217723C2EB3D003811A4 /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217623C2EB3D003811A4 /* ControlBar.swift */; };
+		C903217523C2E597003811A4 /* ControlBarModel+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217423C2E597003811A4 /* ControlBarModel+Actions.swift */; };
+		C903217723C2EB3D003811A4 /* ControlBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217623C2EB3D003811A4 /* ControlBarModel.swift */; };
 		C903217923C428A7003811A4 /* KeyTrackingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217823C428A6003811A4 /* KeyTrackingWindow.swift */; };
 		C903217B23C42E26003811A4 /* KeyDownMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217A23C42E26003811A4 /* KeyDownMiddleware.swift */; };
 		C9490BD823C1AA1A003F6159 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BD723C1AA1A003F6159 /* AppDelegate.swift */; };
@@ -18,15 +18,19 @@
 		C9490BDF23C1AA1C003F6159 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9490BDE23C1AA1C003F6159 /* Preview Assets.xcassets */; };
 		C9490BE223C1AA1C003F6159 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9490BE023C1AA1C003F6159 /* Main.storyboard */; };
 		C9490BEE23C1AA1C003F6159 /* MathMazerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BED23C1AA1C003F6159 /* MathMazerTests.swift */; };
-		C9490BFA23C1AB09003F6159 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BF923C1AB09003F6159 /* Cell.swift */; };
+		C9490BFA23C1AB09003F6159 /* CellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BF923C1AB09003F6159 /* CellState.swift */; };
 		C9490BFC23C1B626003F6159 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BFB23C1B626003F6159 /* CellView.swift */; };
 		C9490BFF23C25451003F6159 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9490BFE23C25451003F6159 /* ReSwift */; };
 		C9490C0223C25468003F6159 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0123C25468003F6159 /* AppState.swift */; };
-		C9490C0423C25AC0003F6159 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0323C25AC0003F6159 /* Tool.swift */; };
+		C9490C0423C25AC0003F6159 /* ToolState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0323C25AC0003F6159 /* ToolState.swift */; };
 		C9490C0723C25B22003F6159 /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0623C25B22003F6159 /* AppStateReducer.swift */; };
-		C9490C0A23C2A28A003F6159 /* Cell+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0923C2A28A003F6159 /* Cell+Actions.swift */; };
+		C9490C0A23C2A28A003F6159 /* CellModel+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0923C2A28A003F6159 /* CellModel+Actions.swift */; };
 		C9490C0C23C2AF1A003F6159 /* ObservableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0B23C2AF1A003F6159 /* ObservableState.swift */; };
 		C9A397F123C6D25800EF7B06 /* ControlBarReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F023C6D25800EF7B06 /* ControlBarReducer.swift */; };
+		C9A397F323C80F3800EF7B06 /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F223C80F3800EF7B06 /* CellModel.swift */; };
+		C9A397F523C80F8D00EF7B06 /* GridPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F423C80F8D00EF7B06 /* GridPosition.swift */; };
+		C9A397F723C8118100EF7B06 /* SpecialMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F623C8118100EF7B06 /* SpecialMark.swift */; };
+		C9A397FA23C8143200EF7B06 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F923C8143200EF7B06 /* Side.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +45,8 @@
 
 /* Begin PBXFileReference section */
 		C903217223C2E433003811A4 /* ControlBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarView.swift; sourceTree = "<group>"; };
-		C903217423C2E597003811A4 /* ControlBar+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ControlBar+Actions.swift"; sourceTree = "<group>"; };
-		C903217623C2EB3D003811A4 /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
+		C903217423C2E597003811A4 /* ControlBarModel+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ControlBarModel+Actions.swift"; sourceTree = "<group>"; };
+		C903217623C2EB3D003811A4 /* ControlBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarModel.swift; sourceTree = "<group>"; };
 		C903217823C428A6003811A4 /* KeyTrackingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTrackingWindow.swift; sourceTree = "<group>"; };
 		C903217A23C42E26003811A4 /* KeyDownMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDownMiddleware.swift; sourceTree = "<group>"; };
 		C9490BD423C1AA1A003F6159 /* MathMazer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathMazer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,14 +60,18 @@
 		C9490BE923C1AA1C003F6159 /* MathMazerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathMazerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9490BED23C1AA1C003F6159 /* MathMazerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathMazerTests.swift; sourceTree = "<group>"; };
 		C9490BEF23C1AA1C003F6159 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9490BF923C1AB09003F6159 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		C9490BF923C1AB09003F6159 /* CellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellState.swift; sourceTree = "<group>"; };
 		C9490BFB23C1B626003F6159 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		C9490C0123C25468003F6159 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		C9490C0323C25AC0003F6159 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		C9490C0323C25AC0003F6159 /* ToolState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolState.swift; sourceTree = "<group>"; };
 		C9490C0623C25B22003F6159 /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
-		C9490C0923C2A28A003F6159 /* Cell+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Actions.swift"; sourceTree = "<group>"; };
+		C9490C0923C2A28A003F6159 /* CellModel+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CellModel+Actions.swift"; sourceTree = "<group>"; };
 		C9490C0B23C2AF1A003F6159 /* ObservableState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableState.swift; sourceTree = "<group>"; };
 		C9A397F023C6D25800EF7B06 /* ControlBarReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarReducer.swift; sourceTree = "<group>"; };
+		C9A397F223C80F3800EF7B06 /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
+		C9A397F423C80F8D00EF7B06 /* GridPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPosition.swift; sourceTree = "<group>"; };
+		C9A397F623C8118100EF7B06 /* SpecialMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialMark.swift; sourceTree = "<group>"; };
+		C9A397F923C8143200EF7B06 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +117,8 @@
 				C9490C0823C2A280003F6159 /* Actions */,
 				C9490C0523C25B16003F6159 /* Reducers */,
 				C9490C0023C2545D003F6159 /* State */,
-				C9490BF823C1AAED003F6159 /* Models */,
+				C9A397F823C812B600EF7B06 /* Models */,
+				C9490BF823C1AAED003F6159 /* ViewModels */,
 				C9490BD723C1AA1A003F6159 /* AppDelegate.swift */,
 				C903217823C428A6003811A4 /* KeyTrackingWindow.swift */,
 				C9490BD923C1AA1A003F6159 /* ContentView.swift */,
@@ -142,14 +151,13 @@
 			path = MathMazerTests;
 			sourceTree = "<group>";
 		};
-		C9490BF823C1AAED003F6159 /* Models */ = {
+		C9490BF823C1AAED003F6159 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				C9490BF923C1AB09003F6159 /* Cell.swift */,
-				C9490C0323C25AC0003F6159 /* Tool.swift */,
-				C903217623C2EB3D003811A4 /* ControlBar.swift */,
+				C903217623C2EB3D003811A4 /* ControlBarModel.swift */,
+				C9A397F223C80F3800EF7B06 /* CellModel.swift */,
 			);
-			path = Models;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		C9490C0023C2545D003F6159 /* State */ = {
@@ -157,6 +165,8 @@
 			children = (
 				C9490C0123C25468003F6159 /* AppState.swift */,
 				C9490C0B23C2AF1A003F6159 /* ObservableState.swift */,
+				C9490BF923C1AB09003F6159 /* CellState.swift */,
+				C9490C0323C25AC0003F6159 /* ToolState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -173,10 +183,20 @@
 		C9490C0823C2A280003F6159 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				C9490C0923C2A28A003F6159 /* Cell+Actions.swift */,
-				C903217423C2E597003811A4 /* ControlBar+Actions.swift */,
+				C9490C0923C2A28A003F6159 /* CellModel+Actions.swift */,
+				C903217423C2E597003811A4 /* ControlBarModel+Actions.swift */,
 			);
 			path = Actions;
+			sourceTree = "<group>";
+		};
+		C9A397F823C812B600EF7B06 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C9A397F423C80F8D00EF7B06 /* GridPosition.swift */,
+				C9A397F623C8118100EF7B06 /* SpecialMark.swift */,
+				C9A397F923C8143200EF7B06 /* Side.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,20 +307,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9490BFC23C1B626003F6159 /* CellView.swift in Sources */,
-				C903217723C2EB3D003811A4 /* ControlBar.swift in Sources */,
+				C903217723C2EB3D003811A4 /* ControlBarModel.swift in Sources */,
+				C9A397F523C80F8D00EF7B06 /* GridPosition.swift in Sources */,
 				C9A397F123C6D25800EF7B06 /* ControlBarReducer.swift in Sources */,
 				C9490C0C23C2AF1A003F6159 /* ObservableState.swift in Sources */,
-				C9490C0A23C2A28A003F6159 /* Cell+Actions.swift in Sources */,
+				C9490C0A23C2A28A003F6159 /* CellModel+Actions.swift in Sources */,
+				C9A397F323C80F3800EF7B06 /* CellModel.swift in Sources */,
 				C9490C0223C25468003F6159 /* AppState.swift in Sources */,
+				C9A397FA23C8143200EF7B06 /* Side.swift in Sources */,
 				C9490BDA23C1AA1A003F6159 /* ContentView.swift in Sources */,
-				C903217523C2E597003811A4 /* ControlBar+Actions.swift in Sources */,
-				C9490C0423C25AC0003F6159 /* Tool.swift in Sources */,
+				C903217523C2E597003811A4 /* ControlBarModel+Actions.swift in Sources */,
+				C9490C0423C25AC0003F6159 /* ToolState.swift in Sources */,
 				C903217923C428A7003811A4 /* KeyTrackingWindow.swift in Sources */,
 				C903217B23C42E26003811A4 /* KeyDownMiddleware.swift in Sources */,
 				C903217323C2E433003811A4 /* ControlBarView.swift in Sources */,
 				C9490C0723C25B22003F6159 /* AppStateReducer.swift in Sources */,
 				C9490BD823C1AA1A003F6159 /* AppDelegate.swift in Sources */,
-				C9490BFA23C1AB09003F6159 /* Cell.swift in Sources */,
+				C9A397F723C8118100EF7B06 /* SpecialMark.swift in Sources */,
+				C9490BFA23C1AB09003F6159 /* CellState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

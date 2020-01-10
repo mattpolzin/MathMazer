@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ControlBar: Hashable, Identifiable {
+struct ControlBarModel: Hashable, Identifiable {
     let id: Int = 1
 
     let buildMode: Mode

@@ -10,11 +10,11 @@ import ReSwift
 import Foundation
 
 struct AppState: StateType, Codable {
-    var cells: [[Cell]]
+    var cells: [[CellState]]
 
     private(set) var cellSelections: CellSelections
 
-    var selectedCellPosition: Cell.Position? {
+    var selectedCellPosition: GridPosition? {
         get {
             switch tool.mode {
             case .design:
@@ -33,16 +33,16 @@ struct AppState: StateType, Codable {
         }
     }
 
-    var tool: Tool
+    var tool: ToolState
 
-    var controlBar: ControlBar {
-        ControlBar(buildMode: tool.mode)
+    var controlBar: ControlBarModel {
+        ControlBarModel(buildMode: tool.mode)
     }
 
     var rows: Int { cells.count }
     var columns: Int { cells[0].count }
 
-    func cell(at position: Cell.Position) -> Cell {
+    func cell(at position: GridPosition) -> CellState {
         precondition(position.row >= 0 && position.row < rows)
         precondition(position.column >= 0 && position.column < columns)
 
@@ -70,8 +70,8 @@ struct AppState: StateType, Codable {
     }
 
     struct CellSelections: Equatable, Codable {
-        var design: Cell.Position?
-        var play: Cell.Position?
+        var design: GridPosition?
+        var play: GridPosition?
     }
 }
 
@@ -83,7 +83,7 @@ extension AppState {
 
         cells = (0..<height).map { row in
             (0..<width).map { column in
-                let cellType: Cell.CellType
+                let cellType: CellState.CellType
                 if row > 0
                     && column > 0
                     && row < height - 1
@@ -93,7 +93,7 @@ extension AppState {
                     cellType = .excluded
                 }
 
-                return Cell(row: row, column: column, cellType: cellType)
+                return CellState(row: row, column: column, cellType: cellType)
             }
         }
 

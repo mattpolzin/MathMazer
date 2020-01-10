@@ -1,5 +1,5 @@
 //
-//  ControlBar+Actions.swift
+//  ControlBarModel+Actions.swift
 //  MathMazer
 //
 //  Created by Mathew Polzin on 1/5/20.
@@ -11,7 +11,7 @@ import ReSwift
 
 protocol ControlBarAction: Action {}
 
-extension ControlBar {
+extension ControlBarModel {
     struct TappedPlayToggle: ControlBarAction { fileprivate init() {} }
     struct TappedReset: ControlBarAction { fileprivate init() {} }
     struct TappedSave: ControlBarAction { fileprivate init() {} }

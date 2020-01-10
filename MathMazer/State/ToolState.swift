@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Tool: String, Codable, Hashable {
+enum ToolState: String, Codable, Hashable {
     case mapMaker
     case player
 

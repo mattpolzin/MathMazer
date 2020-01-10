@@ -13,7 +13,7 @@ struct ContentView: View {
     @ObservedObject private var appState = ObservableState(store: store)
 
     var body: some View {
-        func dragGesture(for cell: Cell, within frame: CGSize) -> some Gesture {
+        func dragGesture(for cell: CellModel, within frame: CGSize) -> some Gesture {
             DragGesture()
                 .onEnded { value in
                     store.dispatch(
@@ -25,14 +25,14 @@ struct ContentView: View {
             }
         }
 
-        func tapGesture(for cell: Cell) -> some Gesture {
+        func tapGesture(for cell: CellModel) -> some Gesture {
             TapGesture()
                 .onEnded {
                     store.dispatch(cell.tapped)
             }
         }
 
-        func ctrlClickGesture(for cell: Cell) -> some Gesture {
+        func ctrlClickGesture(for cell: CellModel) -> some Gesture {
             TapGesture()
                 .modifiers(.control)
                 .onEnded { _ in
@@ -40,7 +40,7 @@ struct ContentView: View {
             }
         }
 
-        func shiftClickGesture(for cell: Cell) -> some Gesture {
+        func shiftClickGesture(for cell: CellModel) -> some Gesture {
             TapGesture()
                 .modifiers(.shift)
                 .onEnded { _ in
@@ -48,23 +48,32 @@ struct ContentView: View {
             }
         }
 
-        let cells = appState.current.cells
         let controlBar = appState.current.controlBar
         let toolMode = appState.current.tool.mode
         let selectedCellPosition = appState.current.selectedCellPosition
+
+        func cellModel(for cell: CellState) -> CellModel {
+            return CellModel(
+                state: cell,
+                for: toolMode,
+                selected: selectedCellPosition.map { $0 == cell.position } ?? false
+            )
+        }
+
+        let cells = appState.current.cells.map { $0.map(cellModel) }
 
         return VStack(spacing: 0) {
             ControlBarView(model: controlBar)
             ForEach(cells, id: \.self) { row in
                 HStack(spacing: 0) {
-                    ForEach(row, id: \.self) { cell in
+                    ForEach(row, id: \.self) { cellModel in
                         GeometryReader { geometry in
-                            CellView(model: cell, mode: toolMode, selected: selectedCellPosition.map { $0 == cell.position } ?? false)
+                            CellView(model: cellModel)
                             .gesture(
-                                dragGesture(for: cell, within: geometry.size)
-                                    .exclusively(before: shiftClickGesture(for: cell))
-                                    .exclusively(before: ctrlClickGesture(for: cell))
-                                    .exclusively(before: tapGesture(for: cell))
+                                dragGesture(for: cellModel, within: geometry.size)
+                                    .exclusively(before: shiftClickGesture(for: cellModel))
+                                    .exclusively(before: ctrlClickGesture(for: cellModel))
+                                    .exclusively(before: tapGesture(for: cellModel))
                             )
                         }
                     }
@@ -80,8 +89,8 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-func closestSide(for point: CGPoint, within frame: CGSize) -> Cell.Side {
-    let distances: [(Cell.Side, CGFloat)] = [
+func closestSide(for point: CGPoint, within frame: CGSize) -> Side {
+    let distances: [(Side, CGFloat)] = [
         (.left, point.x),
         (.right, frame.width - point.x),
         (.top, point.y),

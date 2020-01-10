@@ -28,10 +28,10 @@ func sizeMainWindowForGrid(rows: Int, columns: Int) {
 func controlBarReducer(action: ControlBarAction, state: AppState) -> AppState {
     var state = state
     switch action {
-    case is ControlBar.TappedPlayToggle:
+    case is ControlBarModel.TappedPlayToggle:
         state.tool.toggle()
 
-    case is ControlBar.TappedReset:
+    case is ControlBarModel.TappedReset:
         if state.tool.mode == .design {
             // TODO: move into middleware or thunk
             let alert = NSAlert()
@@ -52,7 +52,7 @@ func controlBarReducer(action: ControlBarAction, state: AppState) -> AppState {
             state = state.clearingPlayMode()
         }
 
-    case is ControlBar.TappedSave:
+    case is ControlBarModel.TappedSave:
         // TODO: move into middleware or thunk
         let savePanel = NSSavePanel()
         savePanel.begin { result in
@@ -60,10 +60,10 @@ func controlBarReducer(action: ControlBarAction, state: AppState) -> AppState {
                 let url = savePanel.url else {
                     return
             }
-            store.dispatch(ControlBar.chose(file: url, for: .save))
+            store.dispatch(ControlBarModel.chose(file: url, for: .save))
         }
 
-    case is ControlBar.TappedOpen:
+    case is ControlBarModel.TappedOpen:
         // TODO: move into middleware or thunk
         let openPanel = NSOpenPanel()
         openPanel.begin { result in
@@ -71,15 +71,15 @@ func controlBarReducer(action: ControlBarAction, state: AppState) -> AppState {
                 let url = openPanel.url else {
                     return
             }
-            store.dispatch(ControlBar.chose(file: url, for: .open))
+            store.dispatch(ControlBarModel.chose(file: url, for: .open))
         }
 
-    case let fileAction as ControlBar.ChoseFilename where fileAction.purpose == .save:
+    case let fileAction as ControlBarModel.ChoseFilename where fileAction.purpose == .save:
         // TODO: error handling
         // TODO: move into middleware or thunk
         try? JSONEncoder().encode(state).write(to: fileAction.file)
 
-    case let fileAction as ControlBar.ChoseFilename where fileAction.purpose == .open:
+    case let fileAction as ControlBarModel.ChoseFilename where fileAction.purpose == .open:
         // TODO: error handling
         // TODO: move into middleware or thunk
         state = (try? JSONDecoder().decode(AppState.self, from: Data(contentsOf: fileAction.file))) ?? state
