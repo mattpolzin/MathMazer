@@ -39,6 +39,12 @@ struct ControlBarView: View {
             }
             HStack {
                 Spacer()
+                Button(action: { store.dispatch(ControlBar.tappedReset) }) {
+                    Image("reset")
+                        .renderingMode(.template)
+                        .frame(width: 30, height: 30, alignment: .center)
+                        .padding(10)
+                }.buttonStyle(PlainButtonStyle())
                 Button(action: { store.dispatch(ControlBar.tappedSave) }) {
                     Image("save")
                         .renderingMode(.template)
@@ -53,6 +59,5 @@ struct ControlBarView: View {
                 }.buttonStyle(PlainButtonStyle())
             }
         }
-
     }
 }

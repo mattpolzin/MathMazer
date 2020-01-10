@@ -21,7 +21,9 @@ class KeyTrackingWindow: NSWindow {
     }
 }
 
-struct KeyDownAction: Action {
+protocol KeyboardAction: Action {}
+
+struct KeyDownAction: KeyboardAction {
     let key: Key
 
     init?(for event: NSEvent) {
@@ -49,9 +51,4 @@ struct KeyDownAction: Action {
         case upArrow
         case downArrow
     }
-}
-
-struct KeyDownInCellAction: CellAction {
-    let position: Cell.Position
-    let key: KeyDownAction.Key
 }

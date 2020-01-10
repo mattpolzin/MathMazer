@@ -15,7 +15,7 @@ func keyDownMiddleware(dispatch: @escaping DispatchFunction, getState: @escaping
             if let keyAction = action as? KeyDownAction,
                 let selectedCellPosition = getState()?.selectedCellPosition {
                 return next(
-                    KeyDownInCellAction(
+                    Cell.KeyDownAction(
                         position: selectedCellPosition,
                         key: keyAction.key
                     )

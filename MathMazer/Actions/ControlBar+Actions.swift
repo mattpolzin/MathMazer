@@ -9,13 +9,21 @@
 import Foundation
 import ReSwift
 
+protocol ControlBarAction: Action {}
+
 extension ControlBar {
-    struct TappedPlayToggle: Action {}
-    struct TappedSave: Action {}
-    struct TappedOpen: Action {}
-    struct ChoseFilename: Action {
+    struct TappedPlayToggle: ControlBarAction { fileprivate init() {} }
+    struct TappedReset: ControlBarAction { fileprivate init() {} }
+    struct TappedSave: ControlBarAction { fileprivate init() {} }
+    struct TappedOpen: ControlBarAction { fileprivate init() {} }
+    struct ChoseFilename: ControlBarAction {
         let file: URL
         let purpose: Purpose
+
+        fileprivate init(file: URL, purpose: Purpose) {
+            self.file = file
+            self.purpose = purpose
+        }
 
         enum Purpose {
             case save
@@ -24,6 +32,7 @@ extension ControlBar {
     }
 
     static let tappedPlayToggle = TappedPlayToggle()
+    static let tappedReset = TappedReset()
     static let tappedSave = TappedSave()
     static let tappedOpen = TappedOpen()
 

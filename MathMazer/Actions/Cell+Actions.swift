@@ -16,20 +16,43 @@ protocol CellAction: Action {
 extension Cell {
     struct TappedAction: CellAction {
         let position: Position
+
+        fileprivate init(position: Position) {
+            self.position = position
+        }
     }
 
     struct CtrlClickedAction: CellAction {
         let position: Position
+
+        fileprivate init(position: Position) {
+            self.position = position
+        }
     }
 
     struct ShiftClickedAction: CellAction {
         let position: Position
+
+        fileprivate init(position: Position) {
+            self.position = position
+        }
     }
 
     struct DraggingAction: CellAction {
         let position: Position
         let startClosestSide: Side
         let endClosestSide: Side
+
+        fileprivate init(position: Position, startClosestSide: Side, endClosestSide: Side) {
+            self.position = position
+            self.startClosestSide = startClosestSide
+            self.endClosestSide = endClosestSide
+        }
+    }
+
+    struct KeyDownAction: CellAction {
+        let position: Cell.Position
+        let key: MathMazer.KeyDownAction.Key
     }
 
     var tapped: TappedAction {

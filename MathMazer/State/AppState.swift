@@ -55,6 +55,20 @@ struct AppState: StateType, Codable {
 //        }
     }
 
+    func clearingPlayMode() -> AppState {
+        return .init(
+            cells: cells.map { row in
+                row.map { cell in
+                    cell
+                        .clearingPlayLines
+                        .clearingDots
+                }
+            },
+            cellSelections: .init(design: cellSelections.design, play: nil),
+            tool: tool
+        )
+    }
+
     struct CellSelections: Equatable, Codable {
         var design: Cell.Position?
         var play: Cell.Position?
@@ -74,7 +88,7 @@ extension AppState {
                     && column > 0
                     && row < height - 1
                     && column < width - 1 {
-                    cellType = .included(design: [], play: [], specialMark: nil)
+                    cellType = .included(design: .noLines, play: .noLines, specialMark: nil)
                 } else {
                     cellType = .excluded
                 }
@@ -106,30 +120,30 @@ extension AppState {
             ],
             [
                 .init(row: 2, column: 0, cellType: .excluded),
-                .init(row: 2, column: 1, cellType: .included(design: [], play: [], specialMark: nil)),
-                .init(row: 2, column: 2, cellType: .included(design: .lowerRight, play: [], specialMark: nil)),
-                .init(row: 2, column: 3, cellType: .included(design: .lowerLeft, play: [], specialMark: nil)),
+                .init(row: 2, column: 1, cellType: .included(design: .noLines, play: .noLines, specialMark: nil)),
+                .init(row: 2, column: 2, cellType: .included(design: .lowerRight, play: .noLines, specialMark: nil)),
+                .init(row: 2, column: 3, cellType: .included(design: .lowerLeft, play: .noLines, specialMark: nil)),
                 .init(row: 2, column: 4, cellType: .excluded)
             ],
             [
-                .init(row: 3, column: 0, cellType: .included(design: .horizontal, play: [], specialMark: nil)),
-                .init(row: 3, column: 1, cellType: .included(design: .lowerLeft, play: [], specialMark: nil)),
-                .init(row: 3, column: 2, cellType: .included(design: .vertical, play: [], specialMark: nil)),
-                .init(row: 3, column: 3, cellType: .included(design: .upperRight, play: [], specialMark: nil)),
-                .init(row: 3, column: 4, cellType: .included(design: .horizontal, play: [], specialMark: nil))
+                .init(row: 3, column: 0, cellType: .included(design: .horizontal, play: .noLines, specialMark: nil)),
+                .init(row: 3, column: 1, cellType: .included(design: .lowerLeft, play: .noLines, specialMark: nil)),
+                .init(row: 3, column: 2, cellType: .included(design: .vertical, play: .noLines, specialMark: nil)),
+                .init(row: 3, column: 3, cellType: .included(design: .upperRight, play: .noLines, specialMark: nil)),
+                .init(row: 3, column: 4, cellType: .included(design: .horizontal, play: .noLines, specialMark: nil))
             ],
             [
                 .init(row: 4, column: 0, cellType: .excluded),
-                .init(row: 4, column: 1, cellType: .included(design: .upperRight, play: [], specialMark: nil)),
-                .init(row: 4, column: 2, cellType: .included(design: .upperLeft, play: [], specialMark: nil)),
-                .init(row: 4, column: 3, cellType: .included(design: [], play: [], specialMark: nil)),
+                .init(row: 4, column: 1, cellType: .included(design: .upperRight, play: .noLines, specialMark: nil)),
+                .init(row: 4, column: 2, cellType: .included(design: .upperLeft, play: .noLines, specialMark: nil)),
+                .init(row: 4, column: 3, cellType: .included(design: .noLines, play: .noLines, specialMark: nil)),
                 .init(row: 4, column: 4, cellType: .excluded)
             ],
             [
                 .init(row: 5, column: 0, cellType: .excluded),
-                .init(row: 5, column: 1, cellType: .included(design: [], play: [], specialMark: nil)),
-                .init(row: 5, column: 2, cellType: .included(design: [], play: [], specialMark: nil)),
-                .init(row: 5, column: 3, cellType: .included(design: [], play: [], specialMark: nil)),
+                .init(row: 5, column: 1, cellType: .included(design: .noLines, play: .noLines, specialMark: nil)),
+                .init(row: 5, column: 2, cellType: .included(design: .noLines, play: .noLines, specialMark: nil)),
+                .init(row: 5, column: 3, cellType: .included(design: .noLines, play: .noLines, specialMark: nil)),
                 .init(row: 5, column: 4, cellType: .excluded)
             ],
             [

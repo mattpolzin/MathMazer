@@ -10,7 +10,8 @@ import SwiftUI
 
 // TODO: move logic here into new models created from state rather than just passing state through. For example, instead of figuring out which mode should result in which lines being drawn, just pass the lines that need drawing in straight away.
 
-fileprivate let lineWidth: CGFloat = 15
+fileprivate let lineWidth: CGFloat = 8
+fileprivate let dotSize: CGFloat = 15
 
 struct CellView: View {
 
@@ -18,30 +19,31 @@ struct CellView: View {
     var mode: Mode
     var selected: Bool
 
-    var borderColor: Color { selected ? .blue : .black }
+    var borderColor: Color { selected ? .blue : .gray }
     var borderWidth: CGFloat { selected ? 2.0 : 0.5 }
 
     var body: some View {
         ZStack {
 
-            if model.isExcluded {
-                Color.gray
+            // background color
+            model.isExcluded ? Color.gray : Color.white
 
+            // border
+            if model.specialMark != .blank {
+                Rectangle()
+                    .fill(Color.clear)
+                    .border(borderColor, width: borderWidth)
+            }
+
+            if model.isExcluded {
                 // dot counts
                 countText
             } else {
-                Color.white
-
                 // start or end mark
                 specialMark
 
                 LinesView(model: model.cellType, mode: mode)
             }
-
-            // border
-            Rectangle()
-                .fill(Color.clear)
-                .border(borderColor, width: borderWidth)
         }
     }
 
@@ -66,9 +68,10 @@ struct CellView: View {
         let shapedMark = mark.map { mark in
             ZStack {
                 if mark.0 == .start || mark.0 == .end {
-                    mark.1.clipShape(Circle().inset(by: lineWidth))
+                    mark.1.clipShape(Circle().inset(by: dotSize))
+                    Color.black.clipShape(Circle()).frame(width: dotSize, height: dotSize, alignment: .center)
                 } else if mark.0 == .dot {
-                    mark.1.clipShape(Circle()).frame(width: lineWidth, height: lineWidth, alignment: .center)
+                    mark.1.clipShape(Circle()).frame(width: dotSize, height: dotSize, alignment: .center)
                 } else if mark.0 == .blank {
                     mark.1
                 }
@@ -86,7 +89,7 @@ struct CellView: View {
                         .foregroundColor(.black)
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .trailing)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 6))
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 4))
                 }
             }
 
@@ -96,14 +99,14 @@ struct CellView: View {
                         .foregroundColor(.black)
                         .font(.headline)
                         .frame(maxHeight: .infinity, alignment: .bottom)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 6, trailing: 0))
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
                 }
             }
 
             if model.dotCount?.isBidirectional ?? false {
                 GeometryReader { geometry in
                     Path { path in
-                        path.move(to: .init(x: geometry.size.width / 2, y: geometry.size.height / 2))
+                        path.move(to: .init(x: geometry.size.width / 2, y: (geometry.size.height * 2) / 5))
                         path.addLine(to: .init(x: geometry.size.width, y: geometry.size.height))
                     }.stroke(style: StrokeStyle(lineWidth: 2, dash: [2]))
                         .foregroundColor(.white)
@@ -191,6 +194,6 @@ struct LinesView: View {
 
 struct CellView_Previews: PreviewProvider {
     static var previews: some View {
-        CellView(model: Cell(row: 0, column: 0, cellType: .included(design: .lowerLeft, play: [], specialMark: nil)), mode: .design, selected: false)
+        CellView(model: Cell(row: 0, column: 0, cellType: .included(design: .noLines, play: .noLines, specialMark: nil)), mode: .design, selected: false)
     }
 }

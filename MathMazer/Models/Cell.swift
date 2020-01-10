@@ -26,6 +26,10 @@ struct Cell: Codable, Hashable {
         return cellType.hasNoLines
     }
 
+    func hasNoLines(in mode: Mode) -> Bool {
+        return cellType.hasNoLines(in: mode)
+    }
+
     var dotCount: DotCount? {
         return cellType.dotCount
     }
@@ -34,13 +38,29 @@ struct Cell: Codable, Hashable {
         return cellType.specialMark
     }
 
+    var clearingPlayLines: Self {
+        return .init(
+            row: position.row,
+            column: position.column,
+            cellType: cellType.clearingPlayLines
+        )
+    }
+
+    var clearingDots: Self {
+        return .init(
+            row: position.row,
+            column: position.column,
+            cellType: cellType.clearingDots
+        )
+    }
+
     enum CellType: Codable, Hashable {
         case excluded(dotCount: DotCount)
         case included(Included)
 
         static let excluded: Self = .excluded(dotCount: .init(toTheRight: nil, below: nil))
 
-        static func included(design: Lines, play: Lines, specialMark: Included.SpecialMark?) -> Self {
+        static func included(design: LegalLines, play: LegalLines, specialMark: Included.SpecialMark?) -> Self {
             return .included(
                 .init(
                     designLines: design,
@@ -71,7 +91,53 @@ struct Cell: Codable, Hashable {
             case .excluded:
                 return true
             case .included(let included):
-                return included.designLines == [] && included.playLines == []
+                return included.designLines == .noLines && included.playLines == .noLines
+            }
+        }
+
+        func hasNoLines(in mode: Mode) -> Bool {
+            switch self {
+            case .excluded:
+                return true
+            case .included(let included):
+                switch mode {
+                case .design:
+                    return included.designLines == .noLines
+                case .play:
+                    return included.playLines == .noLines
+                }
+            }
+        }
+
+        var clearingPlayLines: Self {
+            switch self {
+            case .excluded:
+                return self
+            case .included(let included):
+                return .included(
+                    .init(
+                        designLines: included.designLines,
+                        playLines: .noLines,
+                        specialMark: included.specialMark
+                    )
+                )
+            }
+        }
+
+        var clearingDots: Self {
+            switch self {
+            case .excluded:
+                return self
+            case .included(let included):
+                return .included(
+                    .init(
+                        designLines: included.designLines,
+                        playLines: included.playLines,
+                        specialMark: included.specialMark == .dot
+                            ? nil
+                            : included.specialMark
+                    )
+                )
             }
         }
 
@@ -99,15 +165,15 @@ struct Cell: Codable, Hashable {
         }
 
         struct Included: Codable, Hashable {
-            var designLines: Lines
-            var playLines: Lines
+            var designLines: LegalLines
+            var playLines: LegalLines
             var specialMark: SpecialMark?
 
             init() {
-                self.init(designLines: [], playLines: [], specialMark: nil)
+                self.init(designLines: .noLines, playLines: .noLines, specialMark: nil)
             }
 
-            init(designLines: Lines, playLines: Lines, specialMark: SpecialMark?) {
+            init(designLines: LegalLines, playLines: LegalLines, specialMark: SpecialMark?) {
                 self.designLines = designLines
                 self.playLines = playLines
                 self.specialMark = specialMark
@@ -134,9 +200,9 @@ struct Cell: Codable, Hashable {
             func contains(_ lines: Lines, for mode: Mode) -> Bool {
                 switch mode {
                 case .design:
-                    return designLines.contains(lines)
+                    return designLines.lines.contains(lines)
                 case .play:
-                    return playLines.contains(lines)
+                    return playLines.lines.contains(lines)
                 }
             }
 
@@ -152,7 +218,11 @@ struct Cell: Codable, Hashable {
                 .init(
                     designLines: designLines,
                     playLines: playLines,
-                    specialMark: specialMark == nil ? .dot : nil
+                    specialMark: specialMark == nil
+                        ? .dot
+                        : specialMark == .dot
+                            ? nil
+                            : specialMark
                 )
             }
 
@@ -160,7 +230,11 @@ struct Cell: Codable, Hashable {
                 .init(
                     designLines: designLines,
                     playLines: playLines,
-                    specialMark: specialMark == nil ? .blank : nil
+                    specialMark: specialMark == nil
+                        ? .blank
+                        : specialMark == .blank
+                            ? nil
+                            : specialMark
                 )
             }
         }
@@ -218,6 +292,53 @@ struct DotCount: Codable, Hashable {
 
     var isBidirectional: Bool {
         return toTheRight != nil && below != nil
+    }
+}
+
+struct LegalLines: Codable, Hashable {
+    let lines: Lines
+
+    private init(forcing lines: Lines) {
+        self.lines = lines
+    }
+
+    init?(_ lines: Lines) {
+        guard Self.legalLines.contains(lines) else {
+            return nil
+        }
+
+        self.lines = lines
+    }
+
+    func union(_ other: Lines) -> LegalLines? {
+        return LegalLines(lines.union(other))
+    }
+
+    static let noLines: Self = .init(forcing: [])
+    static let lowerLeft: Self = .init(forcing: .lowerLeft)
+    static let upperLeft: Self = .init(forcing: .upperLeft)
+    static let lowerRight: Self = .init(forcing: .lowerRight)
+    static let upperRight: Self = .init(forcing: .upperRight)
+    static let horizontal: Self = .init(forcing: .horizontal)
+    static let vertical: Self = .init(forcing: .vertical)
+
+    static let legalLines: [Lines] = [
+        [],
+
+        .left, .right, .top, .bottom,
+
+        .horizontal, .vertical,
+
+        .lowerLeft, .lowerRight,
+        .upperLeft, .upperRight
+    ]
+
+    func encode(to encoder: Encoder) throws {
+        try lines.encode(to: encoder)
+    }
+
+    init(from decoder: Decoder) throws {
+        lines = try .init(from: decoder)
     }
 }
 
