@@ -2,6 +2,9 @@
 
 There is not a lot of information on this type of math maze online, but they (used to be) a staple of Dell puzzle magazines. There is a brief description of the puzzle style [here](http://www.mit.edu/activities/puzzle/2013/coinheist.com/oceans_11/random_walk/index.html).
 
+![design](design.png)
+![play](play.png)
+
 ## Requirements
 MacOS 10.15
 
