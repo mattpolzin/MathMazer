@@ -46,11 +46,19 @@ struct CellState: Codable, Hashable {
         )
     }
 
-    var clearingDots: Self {
+    var clearingDot: Self {
         return .init(
             row: position.row,
             column: position.column,
-            cellType: cellType.clearingDots
+            cellType: cellType.clearingDot
+        )
+    }
+
+    var clearingBlank: Self {
+        return .init(
+            row: position.row,
+            column: position.column,
+            cellType: cellType.clearingBlank
         )
     }
 
@@ -124,7 +132,7 @@ struct CellState: Codable, Hashable {
             }
         }
 
-        var clearingDots: Self {
+        var clearingDot: Self {
             switch self {
             case .excluded:
                 return self
@@ -134,6 +142,23 @@ struct CellState: Codable, Hashable {
                         designLines: included.designLines,
                         playLines: included.playLines,
                         specialMark: included.specialMark == .dot
+                            ? nil
+                            : included.specialMark
+                    )
+                )
+            }
+        }
+
+        var clearingBlank: Self {
+            switch self {
+            case .excluded:
+                return self
+            case .included(let included):
+                return .included(
+                    .init(
+                        designLines: included.designLines,
+                        playLines: included.playLines,
+                        specialMark: included.specialMark == .blank
                             ? nil
                             : included.specialMark
                     )

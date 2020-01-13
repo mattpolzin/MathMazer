@@ -61,7 +61,8 @@ struct AppState: StateType, Codable {
                 row.map { cell in
                     cell
                         .clearingPlayLines
-                        .clearingDots
+                        .clearingDot
+                        .clearingBlank
                 }
             },
             cellSelections: .init(design: cellSelections.design, play: nil),
