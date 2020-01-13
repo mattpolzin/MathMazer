@@ -5,6 +5,16 @@ There is not a lot of information on this type of math maze online, but they (us
 ![design](design.png)
 ![play](play.png)
 
+## Example Mazes
+### [Tiny Maze](./tiny.maze)
+![Tiny Maze](tinymaze.png)
+
+### [Maze 1](./maze1.maze)
+![Maze 1](maze1.png)
+
+### [Maze 2](./maze2.maze)
+![Maze 2](maze2.png)
+
 ## Requirements
 MacOS 10.15
 
