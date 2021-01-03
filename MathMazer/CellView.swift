@@ -13,6 +13,9 @@ import SwiftUI
 fileprivate let lineWidth: CGFloat = 8
 fileprivate let dotSize: CGFloat = 15
 
+fileprivate let lineColor: Color = .black
+fileprivate let dotColor: Color = .black
+
 struct CellView: View {
 
     var model: CellModel
@@ -24,7 +27,8 @@ struct CellView: View {
         ZStack {
 
             // background color
-            model.isExcluded ? Color.gray : Color.white
+            Color.white
+            model.isExcluded ? Color.black.opacity(0.85) : Color.white
 
             // border
             if model.hasBorder {
@@ -56,9 +60,9 @@ struct CellView: View {
                 color = .red
 
             case .dot:
-                color = .black
+                color = dotColor
             case .blank:
-                color = .black
+                color = .gray
             }
             return ($0, color)
         }
@@ -84,7 +88,7 @@ struct CellView: View {
             model.horizontalDotCount.map { count in
                 VStack {
                     Text("\(count)")
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 4))
@@ -94,7 +98,7 @@ struct CellView: View {
             model.verticalDotCount.map { count in
                 HStack {
                     Text("\(count)")
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .font(.headline)
                         .frame(maxHeight: .infinity, alignment: .bottom)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 0))
@@ -130,7 +134,7 @@ struct LinesView: View {
 
             Rectangle()
                 .fill()
-                .foregroundColor(.black)
+                .foregroundColor(lineColor)
                 .frame(minWidth: 0,
                        maxWidth: .infinity,
                        minHeight: lineWidth,
@@ -140,7 +144,7 @@ struct LinesView: View {
 
             Rectangle()
                 .fill()
-                .foregroundColor(.black)
+                .foregroundColor(lineColor)
                 .frame(minWidth: 0,
                        maxWidth: .infinity,
                        minHeight: lineWidth,
@@ -152,38 +156,42 @@ struct LinesView: View {
 
     var verticalLines: some View {
         GeometryReader { geometry in
-            VStack(spacing: 0) {
-                if self.model.contains(.top) {
-                    Rectangle()
-                        .fill()
-                        .foregroundColor(.black)
-                        .frame(minWidth: lineWidth,
-                               maxWidth: lineWidth,
-                               minHeight: 0,
-                               maxHeight: .infinity,
-                               alignment: .center)
-                } else {
-                    Spacer()
-                        .frame(width: lineWidth,
-                               height: (geometry.size.height - lineWidth) / 2,
-                               alignment: .top)
-                }
+            HStack(spacing: 0) {
+                Spacer()
+                VStack(spacing: 0) {
+                    if self.model.contains(.top) {
+                        Rectangle()
+                            .fill()
+                            .foregroundColor(lineColor)
+                            .frame(minWidth: lineWidth,
+                                   maxWidth: lineWidth,
+                                   minHeight: 0,
+                                   maxHeight: .infinity,
+                                   alignment: .center)
+                    } else {
+                        Spacer()
+                            .frame(width: lineWidth,
+                                   height: (geometry.size.height - lineWidth) / 2,
+                                   alignment: .top)
+                    }
 
-                if self.model.contains(.bottom) {
-                    Rectangle()
-                        .fill()
-                        .foregroundColor(.black)
-                        .frame(minWidth: lineWidth,
-                               maxWidth: lineWidth,
-                               minHeight: 0,
-                               maxHeight: .infinity,
-                               alignment: .center)
-                } else {
-                    Spacer()
-                        .frame(width: lineWidth,
-                               height: (geometry.size.height - lineWidth) / 2,
-                               alignment: .bottom)
+                    if self.model.contains(.bottom) {
+                        Rectangle()
+                            .fill()
+                            .foregroundColor(lineColor)
+                            .frame(minWidth: lineWidth,
+                                   maxWidth: lineWidth,
+                                   minHeight: 0,
+                                   maxHeight: .infinity,
+                                   alignment: .center)
+                    } else {
+                        Spacer()
+                            .frame(width: lineWidth,
+                                   height: (geometry.size.height - lineWidth) / 2,
+                                   alignment: .bottom)
+                    }
                 }
+                Spacer()
             }
         }
     }
@@ -191,6 +199,6 @@ struct LinesView: View {
 
 struct CellView_Previews: PreviewProvider {
     static var previews: some View {
-        CellView(model: CellModel(state: CellState(row: 0, column: 0, cellType: .included(design: .noLines, play: .noLines, specialMark: nil)), for: .design, selected: false))
+        CellView(model: CellModel(state: CellState(row: 0, column: 0, cellType: .included(design: .vertical, play: .noLines, specialMark: nil)), for: .design, selected: false))
     }
 }
