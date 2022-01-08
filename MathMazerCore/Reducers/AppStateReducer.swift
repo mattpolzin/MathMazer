@@ -10,7 +10,7 @@ import Foundation
 import ReSwift
 import AppKit
 
-func cellGridReducer(action: Action, state: AppState?) -> AppState {
+public func cellGridReducer(action: Action, state: AppState?) -> AppState {
     var state = state ?? AppState()
 
     if let controlBarAction = action as? ControlBarAction {

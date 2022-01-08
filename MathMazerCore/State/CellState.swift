@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CellState: Codable, Hashable {
+public struct CellState: Codable, Hashable {
     let position: GridPosition
 
     var cellType: CellType

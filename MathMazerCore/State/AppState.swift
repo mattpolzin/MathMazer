@@ -9,8 +9,8 @@
 import ReSwift
 import Foundation
 
-struct AppState: StateType, Codable {
-    var cells: [[CellState]]
+public struct AppState: StateType, Codable {
+    public var cells: [[CellState]]
 
     private(set) var cellSelections: CellSelections
 

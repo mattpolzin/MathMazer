@@ -7,30 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C903217323C2E433003811A4 /* ControlBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217223C2E433003811A4 /* ControlBarView.swift */; };
-		C903217523C2E597003811A4 /* ControlBarModel+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217423C2E597003811A4 /* ControlBarModel+Actions.swift */; };
-		C903217723C2EB3D003811A4 /* ControlBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217623C2EB3D003811A4 /* ControlBarModel.swift */; };
-		C903217923C428A7003811A4 /* KeyTrackingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217823C428A6003811A4 /* KeyTrackingWindow.swift */; };
-		C903217B23C42E26003811A4 /* KeyDownMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217A23C42E26003811A4 /* KeyDownMiddleware.swift */; };
 		C9490BD823C1AA1A003F6159 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BD723C1AA1A003F6159 /* AppDelegate.swift */; };
-		C9490BDA23C1AA1A003F6159 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BD923C1AA1A003F6159 /* ContentView.swift */; };
 		C9490BDC23C1AA1C003F6159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9490BDB23C1AA1C003F6159 /* Assets.xcassets */; };
 		C9490BDF23C1AA1C003F6159 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9490BDE23C1AA1C003F6159 /* Preview Assets.xcassets */; };
 		C9490BE223C1AA1C003F6159 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9490BE023C1AA1C003F6159 /* Main.storyboard */; };
 		C9490BEE23C1AA1C003F6159 /* MathMazerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BED23C1AA1C003F6159 /* MathMazerTests.swift */; };
-		C9490BFA23C1AB09003F6159 /* CellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BF923C1AB09003F6159 /* CellState.swift */; };
-		C9490BFC23C1B626003F6159 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BFB23C1B626003F6159 /* CellView.swift */; };
 		C9490BFF23C25451003F6159 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9490BFE23C25451003F6159 /* ReSwift */; };
-		C9490C0223C25468003F6159 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0123C25468003F6159 /* AppState.swift */; };
-		C9490C0423C25AC0003F6159 /* ToolState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0323C25AC0003F6159 /* ToolState.swift */; };
-		C9490C0723C25B22003F6159 /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0623C25B22003F6159 /* AppStateReducer.swift */; };
-		C9490C0A23C2A28A003F6159 /* CellModel+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0923C2A28A003F6159 /* CellModel+Actions.swift */; };
-		C9490C0C23C2AF1A003F6159 /* ObservableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0B23C2AF1A003F6159 /* ObservableState.swift */; };
-		C9A397F123C6D25800EF7B06 /* ControlBarReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F023C6D25800EF7B06 /* ControlBarReducer.swift */; };
-		C9A397F323C80F3800EF7B06 /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F223C80F3800EF7B06 /* CellModel.swift */; };
-		C9A397F523C80F8D00EF7B06 /* GridPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F423C80F8D00EF7B06 /* GridPosition.swift */; };
-		C9A397F723C8118100EF7B06 /* SpecialMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F623C8118100EF7B06 /* SpecialMark.swift */; };
-		C9A397FA23C8143200EF7B06 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F923C8143200EF7B06 /* Side.swift */; };
+		C9EB1955278A1DBA00BBFD69 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1954278A1DBA00BBFD69 /* PreviewController.swift */; };
+		C9EB195D278A292700BBFD69 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EB195C278A292700BBFD69 /* Quartz.framework */; };
+		C9EB1960278A292700BBFD69 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB195F278A292700BBFD69 /* PreviewViewController.swift */; };
+		C9EB1962278A292700BBFD69 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1961278A292700BBFD69 /* PreviewProvider.swift */; };
+		C9EB1965278A292700BBFD69 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9EB1963278A292700BBFD69 /* PreviewViewController.xib */; };
+		C9EB196A278A292700BBFD69 /* MathMazePreview.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C9EB195A278A292700BBFD69 /* MathMazePreview.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C9EB1970278A2BC900BBFD69 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9EB196F278A2BC900BBFD69 /* ReSwift */; };
+		C9EB197A278A2C0400BBFD69 /* MathMazerCore.docc in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1979278A2C0400BBFD69 /* MathMazerCore.docc */; };
+		C9EB1980278A2C0400BBFD69 /* MathMazerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EB1976278A2C0400BBFD69 /* MathMazerCore.framework */; };
+		C9EB1987278A2C0400BBFD69 /* MathMazerCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1986278A2C0400BBFD69 /* MathMazerCoreTests.swift */; };
+		C9EB1988278A2C0400BBFD69 /* MathMazerCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C9EB1978278A2C0400BBFD69 /* MathMazerCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9EB198B278A2C0400BBFD69 /* MathMazerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EB1976278A2C0400BBFD69 /* MathMazerCore.framework */; };
+		C9EB198C278A2C0400BBFD69 /* MathMazerCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9EB1976278A2C0400BBFD69 /* MathMazerCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C9EB1994278A2C3900BBFD69 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BD923C1AA1A003F6159 /* ContentView.swift */; };
+		C9EB1995278A2C3900BBFD69 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BFB23C1B626003F6159 /* CellView.swift */; };
+		C9EB1996278A2C3900BBFD69 /* ControlBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217223C2E433003811A4 /* ControlBarView.swift */; };
+		C9EB1997278A2C4400BBFD69 /* KeyDownMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217A23C42E26003811A4 /* KeyDownMiddleware.swift */; };
+		C9EB1998278A2CB000BBFD69 /* CellModel+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0923C2A28A003F6159 /* CellModel+Actions.swift */; };
+		C9EB1999278A2CB000BBFD69 /* ControlBarModel+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217423C2E597003811A4 /* ControlBarModel+Actions.swift */; };
+		C9EB199A278A2CB000BBFD69 /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0623C25B22003F6159 /* AppStateReducer.swift */; };
+		C9EB199B278A2CB000BBFD69 /* ControlBarReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F023C6D25800EF7B06 /* ControlBarReducer.swift */; };
+		C9EB199C278A2CB000BBFD69 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0123C25468003F6159 /* AppState.swift */; };
+		C9EB199D278A2CB000BBFD69 /* ObservableState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0B23C2AF1A003F6159 /* ObservableState.swift */; };
+		C9EB199E278A2CB000BBFD69 /* CellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BF923C1AB09003F6159 /* CellState.swift */; };
+		C9EB199F278A2CB000BBFD69 /* ToolState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490C0323C25AC0003F6159 /* ToolState.swift */; };
+		C9EB19A0278A2CB000BBFD69 /* GridPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F423C80F8D00EF7B06 /* GridPosition.swift */; };
+		C9EB19A1278A2CB000BBFD69 /* SpecialMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F623C8118100EF7B06 /* SpecialMark.swift */; };
+		C9EB19A2278A2CB000BBFD69 /* Side.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F923C8143200EF7B06 /* Side.swift */; };
+		C9EB19A3278A2CB000BBFD69 /* ControlBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217623C2EB3D003811A4 /* ControlBarModel.swift */; };
+		C9EB19A4278A2CB000BBFD69 /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A397F223C80F3800EF7B06 /* CellModel.swift */; };
+		C9EB19A6278A2D2C00BBFD69 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9EB19A5278A2D2C00BBFD69 /* ReSwift */; };
+		C9EB19A8278A2D6100BBFD69 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB19A7278A2D6100BBFD69 /* Store.swift */; };
+		C9EB19A9278A2D9700BBFD69 /* KeyTrackingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C903217823C428A6003811A4 /* KeyTrackingWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +56,67 @@
 			remoteGlobalIDString = C9490BD323C1AA1A003F6159;
 			remoteInfo = MathMazer;
 		};
+		C9EB1968278A292700BBFD69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9490BCC23C1AA19003F6159 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9EB1959278A292700BBFD69;
+			remoteInfo = MathMazePreview;
+		};
+		C9EB1981278A2C0400BBFD69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9490BCC23C1AA19003F6159 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9EB1975278A2C0400BBFD69;
+			remoteInfo = MathMazerCore;
+		};
+		C9EB1983278A2C0400BBFD69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9490BCC23C1AA19003F6159 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9490BD323C1AA1A003F6159;
+			remoteInfo = MathMazer;
+		};
+		C9EB1989278A2C0400BBFD69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9490BCC23C1AA19003F6159 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9EB1975278A2C0400BBFD69;
+			remoteInfo = MathMazerCore;
+		};
+		C9EB19AA278A2F0000BBFD69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9490BCC23C1AA19003F6159 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9EB1975278A2C0400BBFD69;
+			remoteInfo = MathMazerCore;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C9EB196E278A292700BBFD69 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C9EB196A278A292700BBFD69 /* MathMazePreview.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9EB1990278A2C0400BBFD69 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C9EB198C278A2C0400BBFD69 /* MathMazerCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C903217223C2E433003811A4 /* ControlBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarView.swift; sourceTree = "<group>"; };
@@ -72,6 +147,20 @@
 		C9A397F423C80F8D00EF7B06 /* GridPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPosition.swift; sourceTree = "<group>"; };
 		C9A397F623C8118100EF7B06 /* SpecialMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialMark.swift; sourceTree = "<group>"; };
 		C9A397F923C8143200EF7B06 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
+		C9EB1954278A1DBA00BBFD69 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
+		C9EB195A278A292700BBFD69 /* MathMazePreview.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MathMazePreview.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9EB195C278A292700BBFD69 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		C9EB195F278A292700BBFD69 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		C9EB1961278A292700BBFD69 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
+		C9EB1964278A292700BBFD69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreviewViewController.xib; sourceTree = "<group>"; };
+		C9EB1966278A292700BBFD69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9EB1967278A292700BBFD69 /* MathMazePreview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MathMazePreview.entitlements; sourceTree = "<group>"; };
+		C9EB1976278A2C0400BBFD69 /* MathMazerCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MathMazerCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9EB1978278A2C0400BBFD69 /* MathMazerCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathMazerCore.h; sourceTree = "<group>"; };
+		C9EB1979278A2C0400BBFD69 /* MathMazerCore.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = MathMazerCore.docc; sourceTree = "<group>"; };
+		C9EB197F278A2C0400BBFD69 /* MathMazerCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathMazerCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9EB1986278A2C0400BBFD69 /* MathMazerCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathMazerCoreTests.swift; sourceTree = "<group>"; };
+		C9EB19A7278A2D6100BBFD69 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9490BFF23C25451003F6159 /* ReSwift in Frameworks */,
+				C9EB198B278A2C0400BBFD69 /* MathMazerCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +177,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9EB1957278A292700BBFD69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9EB195D278A292700BBFD69 /* Quartz.framework in Frameworks */,
+				C9EB1970278A2BC900BBFD69 /* ReSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9EB1973278A2C0400BBFD69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9EB19A6278A2D2C00BBFD69 /* ReSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9EB197C278A2C0400BBFD69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9EB1980278A2C0400BBFD69 /* MathMazerCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +213,10 @@
 			children = (
 				C9490BD623C1AA1A003F6159 /* MathMazer */,
 				C9490BEC23C1AA1C003F6159 /* MathMazerTests */,
+				C9EB195E278A292700BBFD69 /* MathMazePreview */,
+				C9EB1977278A2C0400BBFD69 /* MathMazerCore */,
+				C9EB1985278A2C0400BBFD69 /* MathMazerCoreTests */,
+				C9EB195B278A292700BBFD69 /* Frameworks */,
 				C9490BD523C1AA1A003F6159 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,6 +226,9 @@
 			children = (
 				C9490BD423C1AA1A003F6159 /* MathMazer.app */,
 				C9490BE923C1AA1C003F6159 /* MathMazerTests.xctest */,
+				C9EB195A278A292700BBFD69 /* MathMazePreview.appex */,
+				C9EB1976278A2C0400BBFD69 /* MathMazerCore.framework */,
+				C9EB197F278A2C0400BBFD69 /* MathMazerCoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,22 +236,13 @@
 		C9490BD623C1AA1A003F6159 /* MathMazer */ = {
 			isa = PBXGroup;
 			children = (
-				C9490C0823C2A280003F6159 /* Actions */,
-				C9490C0523C25B16003F6159 /* Reducers */,
-				C9490C0023C2545D003F6159 /* State */,
-				C9A397F823C812B600EF7B06 /* Models */,
-				C9490BF823C1AAED003F6159 /* ViewModels */,
 				C9490BD723C1AA1A003F6159 /* AppDelegate.swift */,
-				C903217823C428A6003811A4 /* KeyTrackingWindow.swift */,
-				C9490BD923C1AA1A003F6159 /* ContentView.swift */,
-				C9490BFB23C1B626003F6159 /* CellView.swift */,
-				C903217223C2E433003811A4 /* ControlBarView.swift */,
 				C9490BDB23C1AA1C003F6159 /* Assets.xcassets */,
 				C9490BE023C1AA1C003F6159 /* Main.storyboard */,
 				C9490BE323C1AA1C003F6159 /* Info.plist */,
 				C9490BE423C1AA1C003F6159 /* MathMazer.entitlements */,
 				C9490BDD23C1AA1C003F6159 /* Preview Content */,
-				C903217A23C42E26003811A4 /* KeyDownMiddleware.swift */,
+				C9EB1954278A1DBA00BBFD69 /* PreviewController.swift */,
 			);
 			path = MathMazer;
 			sourceTree = "<group>";
@@ -199,7 +312,66 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		C9EB195B278A292700BBFD69 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9EB195C278A292700BBFD69 /* Quartz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9EB195E278A292700BBFD69 /* MathMazePreview */ = {
+			isa = PBXGroup;
+			children = (
+				C9EB195F278A292700BBFD69 /* PreviewViewController.swift */,
+				C9EB1961278A292700BBFD69 /* PreviewProvider.swift */,
+				C9EB1963278A292700BBFD69 /* PreviewViewController.xib */,
+				C9EB1966278A292700BBFD69 /* Info.plist */,
+				C9EB1967278A292700BBFD69 /* MathMazePreview.entitlements */,
+			);
+			path = MathMazePreview;
+			sourceTree = "<group>";
+		};
+		C9EB1977278A2C0400BBFD69 /* MathMazerCore */ = {
+			isa = PBXGroup;
+			children = (
+				C903217823C428A6003811A4 /* KeyTrackingWindow.swift */,
+				C903217A23C42E26003811A4 /* KeyDownMiddleware.swift */,
+				C9490BD923C1AA1A003F6159 /* ContentView.swift */,
+				C9490BFB23C1B626003F6159 /* CellView.swift */,
+				C903217223C2E433003811A4 /* ControlBarView.swift */,
+				C9490C0823C2A280003F6159 /* Actions */,
+				C9490C0523C25B16003F6159 /* Reducers */,
+				C9490C0023C2545D003F6159 /* State */,
+				C9A397F823C812B600EF7B06 /* Models */,
+				C9490BF823C1AAED003F6159 /* ViewModels */,
+				C9EB1978278A2C0400BBFD69 /* MathMazerCore.h */,
+				C9EB1979278A2C0400BBFD69 /* MathMazerCore.docc */,
+				C9EB19A7278A2D6100BBFD69 /* Store.swift */,
+			);
+			path = MathMazerCore;
+			sourceTree = "<group>";
+		};
+		C9EB1985278A2C0400BBFD69 /* MathMazerCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				C9EB1986278A2C0400BBFD69 /* MathMazerCoreTests.swift */,
+			);
+			path = MathMazerCoreTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C9EB1971278A2C0400BBFD69 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9EB1988278A2C0400BBFD69 /* MathMazerCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		C9490BD323C1AA1A003F6159 /* MathMazer */ = {
@@ -209,10 +381,14 @@
 				C9490BD023C1AA1A003F6159 /* Sources */,
 				C9490BD123C1AA1A003F6159 /* Frameworks */,
 				C9490BD223C1AA1A003F6159 /* Resources */,
+				C9EB196E278A292700BBFD69 /* Embed App Extensions */,
+				C9EB1990278A2C0400BBFD69 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C9EB1969278A292700BBFD69 /* PBXTargetDependency */,
+				C9EB198A278A2C0400BBFD69 /* PBXTargetDependency */,
 			);
 			name = MathMazer;
 			packageProductDependencies = (
@@ -240,13 +416,74 @@
 			productReference = C9490BE923C1AA1C003F6159 /* MathMazerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C9EB1959278A292700BBFD69 /* MathMazePreview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9EB196B278A292700BBFD69 /* Build configuration list for PBXNativeTarget "MathMazePreview" */;
+			buildPhases = (
+				C9EB1956278A292700BBFD69 /* Sources */,
+				C9EB1957278A292700BBFD69 /* Frameworks */,
+				C9EB1958278A292700BBFD69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9EB19AB278A2F0000BBFD69 /* PBXTargetDependency */,
+			);
+			name = MathMazePreview;
+			packageProductDependencies = (
+				C9EB196F278A2BC900BBFD69 /* ReSwift */,
+			);
+			productName = MathMazePreview;
+			productReference = C9EB195A278A292700BBFD69 /* MathMazePreview.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C9EB1975278A2C0400BBFD69 /* MathMazerCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9EB198D278A2C0400BBFD69 /* Build configuration list for PBXNativeTarget "MathMazerCore" */;
+			buildPhases = (
+				C9EB1971278A2C0400BBFD69 /* Headers */,
+				C9EB1972278A2C0400BBFD69 /* Sources */,
+				C9EB1973278A2C0400BBFD69 /* Frameworks */,
+				C9EB1974278A2C0400BBFD69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MathMazerCore;
+			packageProductDependencies = (
+				C9EB19A5278A2D2C00BBFD69 /* ReSwift */,
+			);
+			productName = MathMazerCore;
+			productReference = C9EB1976278A2C0400BBFD69 /* MathMazerCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C9EB197E278A2C0400BBFD69 /* MathMazerCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9EB1991278A2C0400BBFD69 /* Build configuration list for PBXNativeTarget "MathMazerCoreTests" */;
+			buildPhases = (
+				C9EB197B278A2C0400BBFD69 /* Sources */,
+				C9EB197C278A2C0400BBFD69 /* Frameworks */,
+				C9EB197D278A2C0400BBFD69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9EB1982278A2C0400BBFD69 /* PBXTargetDependency */,
+				C9EB1984278A2C0400BBFD69 /* PBXTargetDependency */,
+			);
+			name = MathMazerCoreTests;
+			productName = MathMazerCoreTests;
+			productReference = C9EB197F278A2C0400BBFD69 /* MathMazerCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C9490BCC23C1AA19003F6159 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Mathew Polzin";
 				TargetAttributes = {
@@ -255,6 +492,16 @@
 					};
 					C9490BE823C1AA1C003F6159 = {
 						CreatedOnToolsVersion = 11.2;
+						TestTargetID = C9490BD323C1AA1A003F6159;
+					};
+					C9EB1959278A292700BBFD69 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					C9EB1975278A2C0400BBFD69 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					C9EB197E278A2C0400BBFD69 = {
+						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = C9490BD323C1AA1A003F6159;
 					};
 				};
@@ -277,6 +524,9 @@
 			targets = (
 				C9490BD323C1AA1A003F6159 /* MathMazer */,
 				C9490BE823C1AA1C003F6159 /* MathMazerTests */,
+				C9EB1959278A292700BBFD69 /* MathMazePreview */,
+				C9EB1975278A2C0400BBFD69 /* MathMazerCore */,
+				C9EB197E278A2C0400BBFD69 /* MathMazerCoreTests */,
 			);
 		};
 /* End PBXProject section */
@@ -299,6 +549,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C9EB1958278A292700BBFD69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9EB1965278A292700BBFD69 /* PreviewViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9EB1974278A2C0400BBFD69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9EB197D278A2C0400BBFD69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -306,25 +578,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9490BFC23C1B626003F6159 /* CellView.swift in Sources */,
-				C903217723C2EB3D003811A4 /* ControlBarModel.swift in Sources */,
-				C9A397F523C80F8D00EF7B06 /* GridPosition.swift in Sources */,
-				C9A397F123C6D25800EF7B06 /* ControlBarReducer.swift in Sources */,
-				C9490C0C23C2AF1A003F6159 /* ObservableState.swift in Sources */,
-				C9490C0A23C2A28A003F6159 /* CellModel+Actions.swift in Sources */,
-				C9A397F323C80F3800EF7B06 /* CellModel.swift in Sources */,
-				C9490C0223C25468003F6159 /* AppState.swift in Sources */,
-				C9A397FA23C8143200EF7B06 /* Side.swift in Sources */,
-				C9490BDA23C1AA1A003F6159 /* ContentView.swift in Sources */,
-				C903217523C2E597003811A4 /* ControlBarModel+Actions.swift in Sources */,
-				C9490C0423C25AC0003F6159 /* ToolState.swift in Sources */,
-				C903217923C428A7003811A4 /* KeyTrackingWindow.swift in Sources */,
-				C903217B23C42E26003811A4 /* KeyDownMiddleware.swift in Sources */,
-				C903217323C2E433003811A4 /* ControlBarView.swift in Sources */,
-				C9490C0723C25B22003F6159 /* AppStateReducer.swift in Sources */,
+				C9EB1955278A1DBA00BBFD69 /* PreviewController.swift in Sources */,
 				C9490BD823C1AA1A003F6159 /* AppDelegate.swift in Sources */,
-				C9A397F723C8118100EF7B06 /* SpecialMark.swift in Sources */,
-				C9490BFA23C1AB09003F6159 /* CellState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +591,50 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C9EB1956278A292700BBFD69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9EB1960278A292700BBFD69 /* PreviewViewController.swift in Sources */,
+				C9EB1962278A292700BBFD69 /* PreviewProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9EB1972278A2C0400BBFD69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9EB1998278A2CB000BBFD69 /* CellModel+Actions.swift in Sources */,
+				C9EB1999278A2CB000BBFD69 /* ControlBarModel+Actions.swift in Sources */,
+				C9EB199A278A2CB000BBFD69 /* AppStateReducer.swift in Sources */,
+				C9EB199B278A2CB000BBFD69 /* ControlBarReducer.swift in Sources */,
+				C9EB199C278A2CB000BBFD69 /* AppState.swift in Sources */,
+				C9EB199D278A2CB000BBFD69 /* ObservableState.swift in Sources */,
+				C9EB199E278A2CB000BBFD69 /* CellState.swift in Sources */,
+				C9EB199F278A2CB000BBFD69 /* ToolState.swift in Sources */,
+				C9EB19A0278A2CB000BBFD69 /* GridPosition.swift in Sources */,
+				C9EB19A1278A2CB000BBFD69 /* SpecialMark.swift in Sources */,
+				C9EB19A9278A2D9700BBFD69 /* KeyTrackingWindow.swift in Sources */,
+				C9EB19A2278A2CB000BBFD69 /* Side.swift in Sources */,
+				C9EB19A3278A2CB000BBFD69 /* ControlBarModel.swift in Sources */,
+				C9EB19A4278A2CB000BBFD69 /* CellModel.swift in Sources */,
+				C9EB1996278A2C3900BBFD69 /* ControlBarView.swift in Sources */,
+				C9EB19A8278A2D6100BBFD69 /* Store.swift in Sources */,
+				C9EB1994278A2C3900BBFD69 /* ContentView.swift in Sources */,
+				C9EB1997278A2C4400BBFD69 /* KeyDownMiddleware.swift in Sources */,
+				C9EB197A278A2C0400BBFD69 /* MathMazerCore.docc in Sources */,
+				C9EB1995278A2C3900BBFD69 /* CellView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9EB197B278A2C0400BBFD69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9EB1987278A2C0400BBFD69 /* MathMazerCoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -343,6 +642,31 @@
 			isa = PBXTargetDependency;
 			target = C9490BD323C1AA1A003F6159 /* MathMazer */;
 			targetProxy = C9490BEA23C1AA1C003F6159 /* PBXContainerItemProxy */;
+		};
+		C9EB1969278A292700BBFD69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9EB1959278A292700BBFD69 /* MathMazePreview */;
+			targetProxy = C9EB1968278A292700BBFD69 /* PBXContainerItemProxy */;
+		};
+		C9EB1982278A2C0400BBFD69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9EB1975278A2C0400BBFD69 /* MathMazerCore */;
+			targetProxy = C9EB1981278A2C0400BBFD69 /* PBXContainerItemProxy */;
+		};
+		C9EB1984278A2C0400BBFD69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9490BD323C1AA1A003F6159 /* MathMazer */;
+			targetProxy = C9EB1983278A2C0400BBFD69 /* PBXContainerItemProxy */;
+		};
+		C9EB198A278A2C0400BBFD69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9EB1975278A2C0400BBFD69 /* MathMazerCore */;
+			targetProxy = C9EB1989278A2C0400BBFD69 /* PBXContainerItemProxy */;
+		};
+		C9EB19AB278A2F0000BBFD69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9EB1975278A2C0400BBFD69 /* MathMazerCore */;
+			targetProxy = C9EB19AA278A2F0000BBFD69 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -353,6 +677,14 @@
 				C9490BE123C1AA1C003F6159 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C9EB1963278A292700BBFD69 /* PreviewViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9EB1964278A292700BBFD69 /* Base */,
+			);
+			name = PreviewViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -474,11 +806,12 @@
 		C9490BF323C1AA1C003F6159 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MathMazer/MathMazer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"MathMazer/Preview Content\"";
 				DEVELOPMENT_TEAM = MQ545UAQRZ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -489,7 +822,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -499,11 +832,12 @@
 		C9490BF423C1AA1C003F6159 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MathMazer/MathMazer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"MathMazer/Preview Content\"";
 				DEVELOPMENT_TEAM = MQ545UAQRZ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -514,7 +848,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -565,6 +899,170 @@
 			};
 			name = Release;
 		};
+		C9EB196C278A292700BBFD69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = MathMazePreview/MathMazePreview.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = MQ545UAQRZ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MathMazePreview/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MathMazePreview;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mathew Polzin. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazer.MathMazePreview;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C9EB196D278A292700BBFD69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = MathMazePreview/MathMazePreview.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = MQ545UAQRZ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MathMazePreview/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MathMazePreview;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mathew Polzin. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazer.MathMazePreview;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C9EB198E278A2C0400BBFD69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MQ545UAQRZ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mathew Polzin. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazerCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C9EB198F278A2C0400BBFD69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MQ545UAQRZ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Mathew Polzin. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazerCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C9EB1992278A2C0400BBFD69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MQ545UAQRZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazerCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathMazer.app/Contents/MacOS/MathMazer";
+			};
+			name = Debug;
+		};
+		C9EB1993278A2C0400BBFD69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MQ545UAQRZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mpolzin.MathMazerCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathMazer.app/Contents/MacOS/MathMazer";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -595,6 +1093,33 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		C9EB196B278A292700BBFD69 /* Build configuration list for PBXNativeTarget "MathMazePreview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9EB196C278A292700BBFD69 /* Debug */,
+				C9EB196D278A292700BBFD69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9EB198D278A2C0400BBFD69 /* Build configuration list for PBXNativeTarget "MathMazerCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9EB198E278A2C0400BBFD69 /* Debug */,
+				C9EB198F278A2C0400BBFD69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9EB1991278A2C0400BBFD69 /* Build configuration list for PBXNativeTarget "MathMazerCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9EB1992278A2C0400BBFD69 /* Debug */,
+				C9EB1993278A2C0400BBFD69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -610,6 +1135,16 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		C9490BFE23C25451003F6159 /* ReSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C9490BFD23C25451003F6159 /* XCRemoteSwiftPackageReference "ReSwift" */;
+			productName = ReSwift;
+		};
+		C9EB196F278A2BC900BBFD69 /* ReSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C9490BFD23C25451003F6159 /* XCRemoteSwiftPackageReference "ReSwift" */;
+			productName = ReSwift;
+		};
+		C9EB19A5278A2D2C00BBFD69 /* ReSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C9490BFD23C25451003F6159 /* XCRemoteSwiftPackageReference "ReSwift" */;
 			productName = ReSwift;

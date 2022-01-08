@@ -9,15 +9,7 @@
 import Cocoa
 import SwiftUI
 import ReSwift
-
-let initialWidth = 12
-let initialHeight = 12
-
-let store = Store<AppState>(
-    reducer: cellGridReducer,
-    state: AppState(width: initialWidth, height: initialHeight),
-    middleware: [keyDownMiddleware]
-)
+import MathMazerCore
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

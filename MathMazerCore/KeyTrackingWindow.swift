@@ -10,8 +10,8 @@ import Foundation
 import AppKit
 import ReSwift
 
-class KeyTrackingWindow: NSWindow {
-    override func keyDown(with event: NSEvent) {
+public class KeyTrackingWindow: NSWindow {
+    override public func keyDown(with event: NSEvent) {
         guard event.type == .keyDown,
             let action = KeyDownAction(for: event) else {
             return

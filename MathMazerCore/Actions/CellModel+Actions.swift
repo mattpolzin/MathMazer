@@ -52,7 +52,7 @@ extension CellModel {
 
     struct KeyDownAction: CellAction {
         let position: GridPosition
-        let key: MathMazer.KeyDownAction.Key
+        let key: MathMazerCore.KeyDownAction.Key
     }
 
     var tapped: TappedAction {

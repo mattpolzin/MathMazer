@@ -9,10 +9,19 @@
 import SwiftUI
 import ReSwift
 
-struct ContentView: View {
+public struct ContentView: View {
     @ObservedObject private var appState = ObservableState(store: store)
 
-    var body: some View {
+    let showControls: Bool
+
+    public init(showControls: Bool = true, loadFile: URL? = nil) {
+        self.showControls = showControls
+        if let file = loadFile {
+            store.dispatch(ControlBarModel.chose(file: file, for: .open))
+        }
+    }
+
+    public var body: some View {
         func dragGesture(for cell: CellModel, within frame: CGSize) -> some Gesture {
             DragGesture()
                 .onEnded { value in
@@ -63,7 +72,9 @@ struct ContentView: View {
         let cells = appState.current.cells.map { $0.map(cellModel) }
 
         return VStack(spacing: 0) {
-            ControlBarView(model: controlBar)
+            if showControls {
+                ControlBarView(model: controlBar)
+            }
             ForEach(cells, id: \.self) { row in
                 HStack(spacing: 0) {
                     ForEach(row, id: \.self) { cellModel in
