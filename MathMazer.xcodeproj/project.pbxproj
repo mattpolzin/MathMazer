@@ -13,10 +13,8 @@
 		C9490BE223C1AA1C003F6159 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9490BE023C1AA1C003F6159 /* Main.storyboard */; };
 		C9490BEE23C1AA1C003F6159 /* MathMazerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9490BED23C1AA1C003F6159 /* MathMazerTests.swift */; };
 		C9490BFF23C25451003F6159 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9490BFE23C25451003F6159 /* ReSwift */; };
-		C9EB1955278A1DBA00BBFD69 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1954278A1DBA00BBFD69 /* PreviewController.swift */; };
 		C9EB195D278A292700BBFD69 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EB195C278A292700BBFD69 /* Quartz.framework */; };
 		C9EB1960278A292700BBFD69 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB195F278A292700BBFD69 /* PreviewViewController.swift */; };
-		C9EB1962278A292700BBFD69 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1961278A292700BBFD69 /* PreviewProvider.swift */; };
 		C9EB1965278A292700BBFD69 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9EB1963278A292700BBFD69 /* PreviewViewController.xib */; };
 		C9EB196A278A292700BBFD69 /* MathMazePreview.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C9EB195A278A292700BBFD69 /* MathMazePreview.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C9EB1970278A2BC900BBFD69 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C9EB196F278A2BC900BBFD69 /* ReSwift */; };
@@ -147,11 +145,9 @@
 		C9A397F423C80F8D00EF7B06 /* GridPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPosition.swift; sourceTree = "<group>"; };
 		C9A397F623C8118100EF7B06 /* SpecialMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialMark.swift; sourceTree = "<group>"; };
 		C9A397F923C8143200EF7B06 /* Side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Side.swift; sourceTree = "<group>"; };
-		C9EB1954278A1DBA00BBFD69 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
 		C9EB195A278A292700BBFD69 /* MathMazePreview.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MathMazePreview.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9EB195C278A292700BBFD69 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		C9EB195F278A292700BBFD69 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
-		C9EB1961278A292700BBFD69 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		C9EB1964278A292700BBFD69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreviewViewController.xib; sourceTree = "<group>"; };
 		C9EB1966278A292700BBFD69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9EB1967278A292700BBFD69 /* MathMazePreview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MathMazePreview.entitlements; sourceTree = "<group>"; };
@@ -242,7 +238,6 @@
 				C9490BE323C1AA1C003F6159 /* Info.plist */,
 				C9490BE423C1AA1C003F6159 /* MathMazer.entitlements */,
 				C9490BDD23C1AA1C003F6159 /* Preview Content */,
-				C9EB1954278A1DBA00BBFD69 /* PreviewController.swift */,
 			);
 			path = MathMazer;
 			sourceTree = "<group>";
@@ -324,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				C9EB195F278A292700BBFD69 /* PreviewViewController.swift */,
-				C9EB1961278A292700BBFD69 /* PreviewProvider.swift */,
 				C9EB1963278A292700BBFD69 /* PreviewViewController.xib */,
 				C9EB1966278A292700BBFD69 /* Info.plist */,
 				C9EB1967278A292700BBFD69 /* MathMazePreview.entitlements */,
@@ -578,7 +572,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9EB1955278A1DBA00BBFD69 /* PreviewController.swift in Sources */,
 				C9490BD823C1AA1A003F6159 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,7 +589,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9EB1960278A292700BBFD69 /* PreviewViewController.swift in Sources */,
-				C9EB1962278A292700BBFD69 /* PreviewProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
